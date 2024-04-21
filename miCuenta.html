@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - Dashboard NEORIS</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script type="module" src="/js/miCuenta.js"></script>
 </head>
 <body>
     <div class="container">
@@ -16,10 +17,10 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <img src="assets/imgs/Icon_light.png" alt="NEORIS" class="logo">
+                            <img src="/img/Icon_light.png" alt="NEORIS" class="logo">
                         </span>
                         <!-- <span class="title">NEORIS</span> -->
-                        <img src="assets/imgs/NEORIS logo light.png" alt="NEORIS_LOGO" class="logo_secondary">
+                        <img src="/img/NEORIS logo light.png" alt="NEORIS_LOGO" class="logo_secondary">
                     </a>
                 </li>
 
@@ -97,7 +98,7 @@
 
                 <div class="user">
                     <a href="miCuenta.html">
-                        <img src="assets/imgs/customer01.jpg" alt="">
+                        <img src="/img/customer01.jpg" alt="">
                     </a>
                 </div> 
             </div>
@@ -106,46 +107,41 @@
             <div class="profile-section">
                 <div class="profile-details">
                     <!-- User Profile Picture and Change Form -->
-                    <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
-                        <div class="profile-picture">
-                            <img src="assets/imgs/customer01.jpg" alt="Profile Picture" id="profileImgPreview">
-                            <input type="file" name="profilePic" id="profilePic" accept="image/*" onchange="previewImage();">
-                        </div>
-                        <div class = "boton">
-                            <input type="submit" value="Actualizar Foto">
-                        </div>
-                        
-                    </form>
-
+                    <div class="profile-picture">
+                        <img src="/img/customer01.jpg" alt="Profile Picture" id="profileImgPreview">
+                        <input type="file" name="profilePic" id="profilePic" accept="image/*" onchange="handleFileInput();">
+                    </div>
+                    <div class = "boton">
+                        <button type="button" id="updateProfilePicture">Actualizar Foto</button>
+                    </div>
+                    <div class="boton">
+                        <button type="button" id="saveProfilePicture"> Salvar Foto</button>
+                    </div>
                     <!-- User Information -->
                     <div class="user-information">
                         <div class="info">
                             <label>Nombre:</label>
-                            <p>Ari Fianto</p>
+                            <p id='profileName'>Ari Fianto</p>
                         </div>
                         <div class="info">
                             <label>Correo:</label>
-                            <p>correo@usuario.com</p>
+                            <p id="profileEmail">correo@usuario.com</p>
                         </div>
                         <div class="info">
                             <label>Contraseña:</label>
-                            <p>************</p>
+                            <p id="profilePassword">************</p>
                         </div>
                         <div class="info">
                             <label>LinkedIn:</label>
-                            <p><a href="https://www.linkedin.com/in/usuario">Perfil de LinkedIn</a></p>
-                        </div>
-                        <div class="info">
-                            <label>Ocupación:</label>
-                            <p>Estudiante</p>
-                        </div>
-                        <div class="info">
-                            <label>Empresa:</label>
-                            <p>Tecnológico de Monterrey</p>
-                          </div>                          
+                            <p><a href="https://www.linkedin.com/in/usuario" id="profileLinkedIn">Perfil de LinkedIn</a></p>
+                        </div>                       
                         <div class="info">
                             <label>Fecha de nacimiento:</label>
-                            <p>02/07/1990</p>
+                            <p id="profileBirthday">02/07/1990</p>
+                        </div>
+                        <div class="info">
+                            <label>Departamento:</label>
+                            <p id="profileDepartment">Recursos Humanos</p>
                         </div>
                         <div class="info">
                             <label>Coins:</label>
@@ -163,8 +159,8 @@
         </div>
     </div>
     <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/busqueda.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/busqueda.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

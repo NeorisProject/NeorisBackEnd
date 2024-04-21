@@ -27,6 +27,7 @@ export {app};
 
 //Authentication 
 const auth = getAuth();
+export {auth};
 
 auth.languageCode = 'en'
 

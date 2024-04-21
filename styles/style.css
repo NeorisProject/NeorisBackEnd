@@ -500,14 +500,14 @@ body {
 }
 
 .profile-picture {
-  /* Estilos para la imagen de perfil */
-  display: block; /* o flex, grid, etc. */
+  display: flex; /* Esto centrará el contenido de la imagen si el contenedor es más grande */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
   margin: auto; /* centra la imagen horizontalmente */
-  width: 150px; /* o el tamaño que desees */
-  height: 150px; /* para mantener la proporción */
-  border-radius: 50%; /* si quieres una imagen redonda */
-  overflow: hidden; /* para asegurarse de que la imagen no desborde si es redonda */
-  position: relative; /* si quieres posicionar algo relativo a la imagen */
+  width: 150px; /* Tamaño del contenedor de la imagen */
+  height: 150px; /* Debe ser igual al ancho para mantener la imagen circular */
+  border-radius: 50%; /* Para hacer la imagen redonda */
+  overflow: hidden; /* Esconde el exceso de imagen para mantener la forma redonda */
 }
 
 .boton {
@@ -519,11 +519,11 @@ body {
 }
 
 .profile-picture img {
-  width: 100%; /* para asegurarse de que la imagen cubra el contenedor .profile-picture */
-  height: auto; /* para mantener la proporción de la imagen */
-  display: block; /* elimina cualquier espacio extra debajo de la imagen */
+  max-width: 100%; /* para asegurarse de que la imagen cubra el contenedor .profile-picture */
+  max-height: 100%; /* para asegurarse de que la imagen no exceda el tamaño del contenedor */
+  object-fit: contain; /* Cubrirá el contenedor, recortando el exceso */
+  object-position: center; /* Centrar la imagen dentro del contenedor */
 }
-
 .user-information {
   display: flex;
   flex-direction: column;
