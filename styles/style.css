@@ -205,6 +205,7 @@ body {
   position: relative;
   width: 40px;
   height: 40px;
+  left: -10px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
@@ -491,23 +492,15 @@ body {
   }
 }
 
-.profile-section {
-  /* Estilos para la sección del perfil */
-}
-
-.profile-header h2 {
-  /* Estilos para el encabezado de la sección del perfil */
-}
-
 .profile-picture {
-  display: flex; /* Esto centrará el contenido de la imagen si el contenedor es más grande */
-  justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
+  /* Estilos para la imagen de perfil */
+  display: block; /* o flex, grid, etc. */
   margin: auto; /* centra la imagen horizontalmente */
-  width: 150px; /* Tamaño del contenedor de la imagen */
-  height: 150px; /* Debe ser igual al ancho para mantener la imagen circular */
-  border-radius: 50%; /* Para hacer la imagen redonda */
-  overflow: hidden; /* Esconde el exceso de imagen para mantener la forma redonda */
+  width: 150px; /* o el tamaño que desees */
+  height: 150px; /* para mantener la proporción */
+  border-radius: 50%; /* si quieres una imagen redonda */
+  overflow: hidden; /* para asegurarse de que la imagen no desborde si es redonda */
+  position: relative; /* si quieres posicionar algo relativo a la imagen */
 }
 
 .boton {
@@ -519,11 +512,11 @@ body {
 }
 
 .profile-picture img {
-  max-width: 100%; /* para asegurarse de que la imagen cubra el contenedor .profile-picture */
-  max-height: 100%; /* para asegurarse de que la imagen no exceda el tamaño del contenedor */
-  object-fit: contain; /* Cubrirá el contenedor, recortando el exceso */
-  object-position: center; /* Centrar la imagen dentro del contenedor */
+  width: 100%; /* para asegurarse de que la imagen cubra el contenedor .profile-picture */
+  height: auto; /* para mantener la proporción de la imagen */
+  display: block; /* elimina cualquier espacio extra debajo de la imagen */
 }
+
 .user-information {
   display: flex;
   flex-direction: column;
@@ -559,6 +552,85 @@ body {
   text-align: center;
 }
 
+/* ====================== Cursos ========================== */
+.cursos-container {
+  width: 95%;
+  height: 100%;
+  background-image: url('../imgs/cursos.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-header {
+  margin-left: 2.5%;
+  font-size: 20px;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.carousel-item {
+  min-width: calc(100% / 3);
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  background: #fff;
+  text-decoration: none;
+  color: #444;
+  flex-shrink: 0;
+}
+
+.carousel-item img {
+  max-height: 200px;
+  width: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-description {
+  padding: 8px 16px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.carousel-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 100;
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
+
+#prevBtn2 {
+  left: 10px;
+}
+
+#nextBtn2 {
+  right: 10px;
+}
+
 /* ====================== Juego ========================== */
 
 .game-container {
@@ -573,6 +645,277 @@ body {
   height: 50%;
 }
 
+/* ====================== Admin ========================== */
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 280px;
+
+}
+
+.candado-container {
+  width: 95%;
+  height: 100%;
+  background-image: url('../imgs/candado.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.white-container {
+  font-size: 18px;
+  color: #1B242A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+  width: 95%; /* O el ancho que prefieras */
+  background-color: var(--gray);
+  border-radius: 1px;
+  transition: transform 0.3s, box-shadow 0.3s; /* Suaviza la transición del zoom y la sombra */
+  /* Añade una sombra inicial ligera si deseas, por ejemplo: */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid Navigation Styles */
+.grid-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  margin: 45px;
+  text-align: center;
+}
+
+.grid-item {
+  background-color: #fff; /* Example button background color */
+  color: #1B242A; /* Example button text color */
+  padding: 40px;
+  border: 1.5px solid #000000; /* Example button border style */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1px;
+}
+
+.grid-item:hover {
+  background-color: #1B242A; /* Example button hover color */
+  color: #F3F2F2;
+}
+
+/* Statistics Grid 2x1 Styles */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  margin-bottom: 40px;
+  margin: 45px;
+}
+
+.stats-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.number {
+  font-size: 3em;
+  margin: 10px 0;
+}
+
+.circular-progress {
+  position: relative;
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  font-size: 0.25em;
+}
+
+.trend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icon-upward {
+  color: #4caf50;
+  margin-right: 5px;
+}
+
+/* Customize the stroke color to match your design */
+.circle {
+  stroke: #000;
+}
+
+/* Barra de busqyeda */
 .highlighted {
   background-color: #ffdd4b;
+}
+
+/* ====================== Admin-GU ========================== */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+  margin: 30px;
+}
+
+.card-user {
+  background-color: #1B242A; 
+  border-radius: 20px; 
+  color: white;
+  padding: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer; 
+}
+
+.card-user:hover {
+  background-color: white;
+  color: #1B242A;
+} 
+
+.card-user:hover ion-icon {
+  color: #1B242A;
+}
+.card-title {
+  font-size: 1.2em; 
+  margin-bottom: 10px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-number {
+  font-size: 2.5em; 
+  font-weight: bold; 
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+}
+
+.card-info ion-icon {
+  margin-left: 5px
+}
+
+ion-icon[name="information-circle-outline"] {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+/* ====================== Admin-GU TABLE ========================== */
+
+.table-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 20px;
+}
+
+td img {
+  border-radius: 100%;
+  height: 30px;
+  width: auto;
+}
+
+thead th {
+  background-color: #edf2f7;
+  color: #4a5568;
+  font-weight: bold;
+}
+
+tbody tr {
+  background-color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f7fafc;
+}
+
+.status-pending {
+  color: #e53e3e;
+}
+
+.status-dispatch {
+  color: #48bb78;
+}
+
+.status-completed {
+  color: #3182ce;
+}
+
+td .status-circle {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.action-icon {
+  cursor: pointer;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('settings-icon.svg') no-repeat center center;
+  background-size: contain;
 }

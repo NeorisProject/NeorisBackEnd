@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-sompatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/tabla-users.css">
+</head>
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <img src="assets/imgs/Icon_light.png" alt="NEORIS" class="logo">
+                        </span>
+                        <!-- <span class="title">NEORIS</span> -->
+                        <img src="assets/imgs/NEORIS logo light.png" alt="NEORIS_LOGO" class="logo_secondary">
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Inicio</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cursos.html">
+                        <span class="icon">
+                            <ion-icon name="flash"></ion-icon>
+                        </span>
+                        <span class="title">Cursos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="juego.html">
+                        <span class="icon">
+                            <ion-icon name="happy"></ion-icon>
+                        </span>
+                        <span class="title">Juego</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="admin.html">
+                        <span class="icon">
+                            <ion-icon name="person"></ion-icon>
+                        </span>
+                        <span class="title">Admin</span>
+                    </a>
+                </li> 
+
+                <li>
+                    <a href="FAQ.html">
+                        <span class="icon">
+                            <ion-icon name="help"></ion-icon>
+                        </span>
+                        <span class="title">FAQ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <h2 class="profile-title">Admin</h2>
+
+                <div class="search">
+                    <label>
+                        <input type="text" id="searchBar" placeholder="Buscar..." onkeyup="searchOnEnter(event)">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <a href="miCuenta.html">
+                        <img src="assets/imgs/customer01.jpg" alt="">
+                    </a>
+                </div> 
+            </div>
+
+            <div class="main-content">
+                <div class="candado-container"></div>
+            </div>
+            <div class="white-container">
+                <h1>Gestionar Usuarios</h1>
+            </div>
+
+            <!-- ========================= Gestion Usuarios Section ==================== -->
+            <div class="card-container">
+                <div class="card-user" id="new-users">
+                    <div class="card-title">Nuevos Usuarios</div>
+                        <div class="card-content">
+                            <div class="card-number">245</div>
+                                <div class="card-info">
+                                    <span>Info</span>
+                                    <ion-icon name="information-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="card-user" id="pending-orders">
+                        <div class="card-title">Usuarios Activos</div>
+                            <div class="card-content">
+                                <div class="card-number">123</div>
+                                <div class="card-info">
+                        <span>Info</span>
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-user" id="delivered-orders">
+                    <div class="card-title">Total Usuarios</div>
+                    <div class="card-content">
+                      <div class="card-number">150</div>
+                      <div class="card-info">
+                        <span>Info</span>
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                      </div>
+                    </div>
+                  </div>     
+                </div>
+            <!-- ========================= Tabla Usuarios Section ==================== -->
+            <div class="table" id="users_table">
+                <section class="table__header">
+                    <h1>Usuarios NEORIS</h1>
+                    <div class="input-group">
+                        <input type="search" placeholder="Buscar datos...">
+                        <img src="assets/imgs/table/search.png" alt="">
+                    </div>
+                    <div class="export__file">
+                        <label for="export-file" class="export__file-btn" title="Export File"></label>
+                        <input type="checkbox" id="export-file">
+                        <div class="export__file-options">
+                            <label>Export As &nbsp; &#10140;</label>
+                            <label for="export-file" id="toPDF">PDF <img src="assets/imgs/table/pdf.png" alt=""></label>
+                            <label for="export-file" id="toJSON">JSON <img src="assets/imgs/table/json.png" alt=""></label>
+                            <label for="export-file" id="toCSV">CSV <img src="assets/imgs/table/csv.png" alt=""></label>
+                            <label for="export-file" id="toEXCEL">EXCEL <img src="assets/imgs/table/excel.png" alt=""></label>
+                        </div>
+                    </div>
+                </section>
+                <section class="table__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> ID <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Nombre <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Correo Electrónico <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Monedas <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Cursos Desbloqueados <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Acción </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td> <img src="assets/imgs/table/customer02.jpg" alt="">Sheccid Lejia</td>
+                                <td> sheccid@neoris.com </td>
+                                <td class="centered"> 1 </td>
+                                <td class="centered"> 3 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Pancho Naranjas </td>
+                                <td> naranjas@tec.mx </td>
+                                <td class="centered"> 5 </td>
+                                <td class="centered"> 8</td>                               
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 3</td>
+                                <td><img src="assets/imgs/table/Sonal Gharti.jpg" alt=""> Hector Tamez </td>
+                                <td> hectorjtt@gmail.com </td>
+                                <td class="centered"> 7 </td>
+                                <td class="centered"> 2 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 4</td>
+                                <td><img src="assets/imgs/table/Alson GC.jpg" alt=""> Diego Larreta </td>
+                                <td> diegoGoGo@yahoo.com </td>
+                                <td class="centered"> 9 </td>
+                                <td class="centered"> 1 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 5</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Enrique Macias </td>
+                                <td> kike@neoris.mx </td>
+                                <td class="centered"> 2 </td>
+                                <td class="centered"> 4 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 6</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Luis Tamez </td>
+                                <td> luisito@comunica.com </td>
+                                <td class="centered"> 4 </td>
+                                <td class="centered"> 5 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 7</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Ramon Dino </td>
+                                <td> ramoncito@neoris.com </td>
+                                <td class="centered"> 1 </td>
+                                <td class="centered"> 0 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 8</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Alejandro Lopez </td>
+                                <td> lopez@gmail.com </td>
+                                <td class="centered"> 7 </td>
+                                <td class="centered"> 1 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 9</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Naranjo Larrieta </td>
+                                <td> naranjas@gratis.com </td>
+                                <td class="centered"> 2 </td>
+                                <td class="centered"> 4 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 3</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Louis Diego </td>
+                                <td> louis@tec.com </td>
+                                <td class="centered"> 8 </td>
+                                <td class="centered"> 6 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 7</td>
+                                <td><img src="assets/imgs/table/customer02.jpg" alt=""> Kike Naranjo </td>
+                                <td> kiki@mexico.us </td>
+                                <td class="centered"> 2 </td>
+                                <td class="centered"> 9 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 1</td>
+                                <td><img src="assets/imgs/table/Alson GC.jpg" alt=""> Mauricio Hernandez </td>
+                                <td> mau@tec.mx </td>
+                                <td class="centered"> 5 </td>
+                                <td class="centered"> 4 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                            <tr>
+                                <td> 5</td>
+                                <td><img src="assets/imgs/table/Alson GC.jpg" alt=""> Lana Mijares </td>
+                                <td> lanita@notengo.com </td>
+                                <td class="centered"> 2 </td>
+                                <td class="centered"> 0 </td>
+                                <td class="centered"><ion-icon name="trash-outline"></ion-icon></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="js/main.js"></script>
+    <script src="js/busqueda.js"></script>
+    <script src="js/users-table.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
