@@ -556,7 +556,7 @@ body {
 .cursos-container {
   width: 95%;
   height: 100%;
-  background-image: url('../imgs/cursos.jpg');
+  background-image: url('../img/cursos.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -659,7 +659,7 @@ body {
 .candado-container {
   width: 95%;
   height: 100%;
-  background-image: url('../imgs/candado.jpg');
+  background-image: url('../img/candado.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
