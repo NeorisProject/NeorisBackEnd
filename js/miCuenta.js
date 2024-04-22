@@ -3,6 +3,7 @@ import { getAuth , onAuthStateChanged} from "https://www.gstatic.com/firebasejs/
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 
+import { updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 
 const db = getFirestore(app);
@@ -26,6 +27,21 @@ function handleFileInput() {
     }
 }
 
+window.handleFileInput = function handleFileInput() {
+    const fileInput = document.getElementById('profilePic');
+    selectedFile = fileInput.files[0];
+    
+    if (selectedFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profileImgPreview').src = e.target.result;
+        };
+        reader.readAsDataURL(selectedFile);
+    }
+};
+
+window.handleFileInput = handleFileInput;
+
 // Esta función se dispara cuando se hace clic en el botón de actualizar foto y abre el diálogo de selección de archivos
 function uploadProfilePicture() {
     document.getElementById('profilePic').click();
@@ -40,31 +56,39 @@ function uploadSelectedFile() {
 
     const user = auth.currentUser;
     if (user) {
+        // Referencia de almacenamiento con el ID del usuario y el nombre del archivo seleccionado.
         const storageReference = storageRef(storage, `profile_images/${user.uid}/${selectedFile.name}`);
+        
+        // Subir el archivo a Firebase Storage.
         uploadBytes(storageReference, selectedFile).then((snapshot) => {
-            console.log('Uploaded a image file!', snapshot);
+            console.log('Uploaded an image file!', snapshot);
 
-            // Obtener la URL de descarga y actualizar el documento del usuario
-            getDownloadURL(snapshot.ref).then((downloadURL) => {
-                console.log('image available at', downloadURL);
+            // Obtener la URL de descarga del archivo subido.
+            return getDownloadURL(snapshot.ref);
+        })
+        .then((downloadURL) => {
+            console.log('Image available at', downloadURL);
 
-                // Actualizar la imagen del perfil en Firestore
-                const userDocRef = doc(db, "users", user.uid);
-                updateDoc(userDocRef, {
-                    profilePicture: downloadURL
-                });
-
-                // Actualizar la imagen en la interfaz de usuario
-                document.getElementById('profileImgPreview').src = downloadURL;
+            // Actualizar el perfil del usuario en Firestore con la nueva URL de la imagen.
+            const userDocRef = doc(db, "users", user.uid);
+            return updateDoc(userDocRef, {
+                profilePicture: downloadURL // Asegúrate de que este campo coincida con el de Firestore.
             });
-        }).catch((error) => {
-            console.error("Error uploading file", error);
+        })
+        .then(() => {
+            // Aquí, después de que la URL se ha guardado en Firestore,
+            // puedes llamar a la función para actualizar la información del perfil
+            // para asegurarte de que la imagen se actualiza en la interfaz de usuario.
+            console.log('Profile image URL updated in Firestore');
+            updateUserProfile(user); // Esta línea es para actualizar la interfaz de usuario.
+        })
+        .catch((error) => {
+            console.error("Error uploading file or updating Firestore", error);
         });
     } else {
         console.log('User not logged in');
     }
 }
-
 
 
 // Function to update user profile details in the DOM
@@ -73,8 +97,9 @@ function updateUserProfile(user) {
     getDoc(userDocRef).then((docSnap) => {
         if (docSnap.exists()) {
             const userData = docSnap.data();
+            console.log("Datos del usuario: ", userData);  // Diagnóstico
             document.getElementById('profileName').textContent = userData.name || 'Nombre no disponible';
-            document.getElementById('profileEmail').textContent = user.email;
+            document.getElementById('profileEmail').textContent = user.email || 'Email no disponible';
             // Not advisable to display passwords in the frontend
             document.getElementById('profilePassword').textContent = user.password;
             const linkedInEl = document.getElementById('profileLinkedIn');
@@ -88,17 +113,11 @@ function updateUserProfile(user) {
             document.getElementById('profileDepartment').textContent = userData.department || 'Departamento no disponible';
             console.log("URL de la imagen del perfil: ", userData.profilePicture); 
             const profileImg = document.getElementById('profileImgPreview');
-            if (docSnap.exists()) {
-                const userData = docSnap.data();
-                console.log("Datos del usuario: ", userData);  // Imprimir todos los datos del usuario para diagnóstico
-                // ...
-            }
             if (userData.profilePicture) {
-                const timeStamp = new Date().getTime();
-                profileImg.src = `${userData.profilePicture}?${timeStamp}`;
+                document.getElementById('profileImgPreview').src = userData.profilePicture;
+                
             }else {
-                profileImg.src = '/img/customer01.jpg'; // imagen por defecto
-                console.log('No se encontro imagen');
+                document.getElementById('profileImgPreview').src = '/img/customer01.jpg'; // imagen por defecto
             }
 
         } else {
