@@ -737,6 +737,15 @@ body {
   background-repeat: no-repeat;
 }
 
+.faq-container {
+  width: 95%;
+  height: 100%;
+  background-image: url('../img/courses-logo/faq-portada.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .white-container {
   font-size: 18px;
   color: #1B242A;
@@ -779,6 +788,10 @@ body {
   background-color: #1B242A; /* Example button hover color */
   color: #F3F2F2;
 }
+
+/* ====================== Admin-FAQ ========================== */
+
+
 
 /* Statistics Grid 2x1 Styles */
 .stats-grid {
