@@ -492,6 +492,7 @@ body {
   }
 }
 
+
 .profile-picture {
   /* Estilos para la imagen de perfil */
   display: block; /* o flex, grid, etc. */
@@ -556,7 +557,7 @@ body {
 .cursos-container {
   width: 95%;
   height: 100%;
-  background-image: url('../img/cursos.jpg');
+  background-image: url('../imgs/cursos.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -631,14 +632,6 @@ body {
   right: 10px;
 }
 
-#prevBtn3 {
-  left: 10px;
-}
-
-#nextBtn3 {
-  right: 10px;
-}
-
 /* ====================== Juego ========================== */
 
 .game-container {
@@ -667,7 +660,7 @@ body {
 .candado-container {
   width: 95%;
   height: 100%;
-  background-image: url('../img/candado.jpg');
+  background-image: url('../imgs/candado.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -804,7 +797,9 @@ body {
 
 /* ====================== Admin-GU ========================== */
 .card-container {
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(3, 1fr); 
   gap: 20px; 
   margin: 30px;
@@ -815,6 +810,7 @@ body {
   border-radius: 20px; 
   color: white;
   padding: 20px; 
+  width: 40%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer; 
@@ -829,14 +825,17 @@ body {
   color: #1B242A;
 }
 .card-title {
-  font-size: 1.2em; 
+  font-size: 1.2em;
   margin-bottom: 10px;
+  text-align: center; 
 }
 
 .card-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
 }
 
 .card-number {
@@ -923,33 +922,10 @@ td .status-circle {
   cursor: pointer;
   display: inline-block;
   width: 16px;
-  height: 16px;
+  height: 5px;
   background: url('settings-icon.svg') no-repeat center center;
   background-size: contain;
 }
 
-.lock-icon {
-  font-size: 26px; /* Cambia esto al tamaño que prefieras */
-  cursor: pointer;
-}
 
 
-.lock-icon.locked {
-  color: red; /* Color cuando está bloqueado */
-}
-
-.lock-icon.unlocked {
-  color: green; /* Color cuando está desbloqueado */
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
-.shake {
-  animation: shake 0.5s;
-}

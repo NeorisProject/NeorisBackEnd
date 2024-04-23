@@ -7,6 +7,7 @@
     <title>Admin</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/tabla-cursos.css">
 </head>
 <body>
     <!-- =============== Navigation ================ -->
@@ -18,7 +19,8 @@
                         <span class="icon">
                             <img src="img/neoris-logos/Icon_light.png" alt="NEORIS" class="logo">
                         </span>
-                        <img src="img/neoris-logos/NEORIS logo light.png"NEORIS_LOGO" class="logo_secondary">
+                        <!-- <span class="title">NEORIS</span> -->
+                        <img src="img/neoris-logos/NEORIS logo light.png" alt="NEORIS_LOGO" class="logo_secondary">
                     </a>
                 </li>
 
@@ -101,12 +103,265 @@
                 </div> 
             </div>
 
-            <!-- ========================= Gestion Cursos Section ==================== -->
-            
+            <div class="main-content">
+                <div class="candado-container"></div>
+            </div>
+            <div class="white-container">
+                <h1>Gestionar Cursos</h1>
+            </div>
+
+            <!-- ========================= Gestion Usuarios Section ==================== -->
+            <div class="card-container">
+                  <div class="card-user" id="delivered-orders">
+                    <div class="card-title">Total Cursos</div>
+                    <div class="card-content">
+                      <div class="card-number">150</div>
+                      <div class="card-info">
+                      </div>
+                    </div>
+                  </div>     
+                </div>
+
+                
+            <!-- ========================= Tabla Usuarios Section ==================== -->
+            <div class="table" id="users_table">
+                <section class="table__header">
+                    <h1>Cursos NEORIS</h1>
+                    <div class="input-group">
+                        <input type="search" placeholder="Buscar cursos...">
+                        <img src="img/table/search.png" alt="">
+                    </div>
+
+                    <div class="icon-container">
+                        <ion-icon name="add-outline" class="add-icon" onclick="openEditModal(9);"></ion-icon>
+                    </div>
+
+                 
+
+                </section>
+                <section class="table__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> ID <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Nombre <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Categoría <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Fecha creación <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Acción </th>
+                           
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 1 </td>
+                                <td> Html </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 03/10/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+                                
+                        
+
+                                
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> Java </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 03/11/2024</td>    
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                        
+
+                            </tr>
+                            <tr>
+                                <td> 3</td>
+                                <td> Python </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 04/09/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+  
+
+                            </tr>
+                            <tr>
+                                <td> 4</td>
+                                <td> JavaScript </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 11/08/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+   
+
+                            </tr>
+                            <tr>
+                                <td> 5</td>
+                                <td> Css </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 09/10/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+
+                            </tr>
+                            <tr>
+                                <td> 6</td>
+                                <td> Html </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 05/04/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+
+                            </tr>
+                            <tr>
+                                <td> 7</td>
+                                <td> Php </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 07/04/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+ 
+                            </tr>
+                            <tr>
+                                <td> 8</td>
+                                <td> C++ </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 11/03/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+
+                            </tr>
+                            <tr>
+                                <td> 9</td>
+                                <td> Express </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 12/03/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+
+                            </tr>
+                            <tr>
+                                <td> 3</td>
+                                <td> React </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 03/10/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+
+                            </tr>
+                            <tr>
+                                <td> 7</td>
+                                <td> Sql </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 05/03/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+ 
+                            </tr>
+                            <tr>
+                                <td> 1</td>
+                                <td> Rust </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 02/05/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td> 5</td>
+                                <td> C# </td>
+                                <td class="centered"> Programacion </td>
+                                <td class="centered"> 01/11/2024 </td>
+                                <td class="center-icon">
+                                    <ion-icon name="settings-outline" class="edit-icon" onclick="openEditModal(9);"></ion-icon>
+                                </td>
+                            </tr>
+
+                                  </div>
+                                  <div id="editCourseModal" class="modal">
+                                    <div class="modal-content">
+                                      <span class="close">&times;</span>
+                           
+                                      <form id="editCourseForm">
+                                        <!-- Nombre del curso -->
+                                        <div class="form-group">
+                                          <label for="editCourseName">Nombre del curso:</label>
+                                          <input type="text" id="editCourseName" name="courseName" required>
+                                        </div>
+                                        
+                                        <!-- Descripción del curso -->
+                                        <div class="form-group">
+                                          <label for="editCourseDescription">Descripción del curso:</label>
+                                          <textarea id="editCourseDescription" name="courseDescription" required></textarea>
+                                        </div>
+                                        
+                                        <!-- Categoría del curso -->
+                                        <div class="form-group">
+                                          <label for="editCourseCategory">Categoría:</label>
+                                          <select id="editCourseCategory" name="courseCategory" required>
+                                            <option value="programming">Programación</option>
+                                            <option value="design">Diseño</option>
+                                            <!-- ... más opciones ... -->
+                                          </select>
+                                        </div>
+                                        
+                                        <!-- Objetivos de aprendizaje -->
+                                        <div class="form-group">
+                                          <label for="editLearningObjectives">Objetivos de aprendizaje:</label>
+                                          <textarea id="editLearningObjectives" name="learningObjectives" required></textarea>
+                                        </div>
+                                        
+                                        <!-- Publicar/Despublicar curso -->
+                                        <div class="form-group toggle-switch">
+                                          <label for="toggleCoursePublication">Publicar Curso:</label>
+                                          <input type="checkbox" id="toggleCoursePublication" name="coursePublication" checked>
+                                        </div>
+                                        
+                                        <!-- Botones de acción -->
+                                        <div class="form-actions">
+                                          <button type="button" onclick="closeEditModal()">Cancelar</button>
+                                          <input type="submit" value="Guardar Cambios">
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                                </div>
+                              </div>
+
+                        </tbody>
+                    </table>
+                </section>
+            </div>
 
     <!-- =========== Scripts =========  -->
     <script src="js/main.js"></script>
     <script src="js/busqueda.js"></script>
+    <script src="js/users-table.js"></script>
+    <script src="js/editar.js"></script>
     <script type="module" src="/js/index.js"></script>
 
     <!-- ====== ionicons ======= -->

@@ -8,6 +8,9 @@
     <title>NEORIS</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="styles/style.css">
+
+
+
 </head>
 
 <body>
@@ -99,7 +102,7 @@
 
                 <div class="user">
                     <a href="miCuenta.html">
-                        <img src="img/customer01.jpg" alt="Profile Picture" id="indexProfileImg">
+                        <img src="assets/imgs/customer01.jpg" alt="">
                     </a>
                 </div> 
             </div>
@@ -115,55 +118,81 @@
             <div class="carousel-container">
                 <header class="carousel-header">Categoria 1</header>
                 <div class="carousel-slide" id="carouselSlide">
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 1">
+
+                    <a href="index.html" class="carousel-item" data-id="curso1" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 1</h3>
-                            <p>Short descrition for item1.</p>
+                          <h3>Item Title 1</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 2">
+                      </a>                 
+        
+                
+    
+                      <a href="index.html" class="carousel-item" data-id="curso2" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 2">
                         <div class="carousel-description">
-                            <h3>Item Title 2</h3>
-                            <p>Short descrition for item2.</p>
+                          <h3>Item Title 2</h3>
+                          <p>Short description for item2.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 3">
+                        
+                      </a>
+
+                    
+                   <a href="index.html" class="carousel-item" data-id="curso3" onclick="checkLock(event, this)" data-locked="false">
+                    <img src="img/cursos.jpg"  alt="Curso 3">
                         <div class="carousel-description">
-                            <h3>Item Title 3</h3>
-                            <p>Short descrition for item3.</p>
+                          <h3>Item Title 3</h3>
+                          <p>Short description for item2.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 4">
+                      </a>  
+                    
+
+                      <a href="index.html" class="carousel-item" data-id="curso4" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg"  alt="Curso 4">
                         <div class="carousel-description">
-                            <h3>Item Title 4</h3>
-                            <p>Short descrition for item4.</p>
+                          <h3>Item Title 4</h3>
+                          <p>Short description for item2.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 5">
+                        
+                      </a>
+                    
+
+                      <a href="index.html" class="carousel-item" data-id="curso5" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg"  alt="Curso 5">
                         <div class="carousel-description">
-                            <h3>Item Title 5</h3>
-                            <p>Short descrition for item5.</p>
+                          <h3>Item Title 5</h3>
+                          <p>Short description for item2.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 6">
+                        
+                      </a>
+
+                      <a href="index.html" class="carousel-item" data-id="curso6" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg"  alt="Curso 6">
                         <div class="carousel-description">
-                            <h3>Item Title 6</h3>
-                            <p>Short descrition for item6.</p>
+                          <h3>Item Title 6</h3>
+                          <p>Short description for item2.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 7">
+                        
+                      </a>  
+                    
+
+                      <a href="index.html" class="carousel-item" data-id="curso7" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg"  alt="Curso 7">
                         <div class="carousel-description">
-                            <h3>Item Title 7</h3>
-                            <p>Short descrition for item7.</p>
+                          <h3>Item Title 7</h3>
+                          <p>Short description for item2.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
+                        
+                      </a>   
+                    
                 </div>
                 <button id="prevBtn">&#10094;</button>
                 <button id="nextBtn">&#10095;</button>
@@ -173,56 +202,72 @@
             <div class="carousel-container">
                 <header class="carousel-header">Categoria 2</header>
                 <div class="carousel-slide" id="carouselSlide2">
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 1">
+
+                    <a href="index.html" class="carousel-item" data-id="curso9" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 8">
                         <div class="carousel-description">
-                            <h3>Item Title 1</h3>
-                            <p>Short descrition for item1.</p>
+                          <h3>Item Title 8</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 2">
+                      </a>      
+                      
+                      <a href="index.html" class="carousel-item" data-id="curso10" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 9">
                         <div class="carousel-description">
-                            <h3>Item Title 2</h3>
-                            <p>Short descrition for item2.</p>
+                          <h3>Item Title 9</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 3">
+                      </a>      
+
+                    <a href="index.html" class="carousel-item" data-id="curso11" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 10">
                         <div class="carousel-description">
-                            <h3>Item Title 3</h3>
-                            <p>Short descrition for item3.</p>
+                          <h3>Item Title 10</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 4">
+                      </a>      
+
+                      <a href="index.html" class="carousel-item" data-id="curso12" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 11">
                         <div class="carousel-description">
-                            <h3>Item Title 4</h3>
-                            <p>Short descrition for item4.</p>
+                          <h3>Item Title 11</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 5">
+                      </a>      
+
+                    <a href="index.html" class="carousel-item" data-id="curso13" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 12">
                         <div class="carousel-description">
-                            <h3>Item Title 5</h3>
-                            <p>Short descrition for item5.</p>
+                          <h3>Item Title 12</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 6">
+                      </a>      
+
+                    <a href="index.html" class="carousel-item" data-id="curso14" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 13">
                         <div class="carousel-description">
-                            <h3>Item Title 6</h3>
-                            <p>Short descrition for item6.</p>
+                          <h3>Item Title 13</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 7">
+                      </a>      
+
+                      <a href="index.html" class="carousel-item" data-id="curso15" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 14">
                         <div class="carousel-description">
-                            <h3>Item Title 7</h3>
-                            <p>Short descrition for item7.</p>
+                          <h3>Item Title 14</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
+                      </a>      
                 </div>
+
+                
                 <button id="prevBtn2">&#10094;</button>
                 <button id="nextBtn2">&#10095;</button>
             </div>
@@ -231,55 +276,70 @@
             <div class="carousel-container">
                 <header class="carousel-header">Categoria 3</header>
                 <div class="carousel-slide" id="carouselSlide3">
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 1">
+
+                    <a href="index.html" class="carousel-item" data-id="curso16" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 1</h3>
-                            <p>Short descrition for item1.</p>
+                          <h3>Item Title 15</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 2">
+                      </a>      
+
+                      <a href="index.html" class="carousel-item" data-id="curso17" onclick="checkLock(event, this)" data-locked="false">
+                        <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 2</h3>
-                            <p>Short descrition for item2.</p>
+                          <h3>Item Title 16</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 3">
+                      </a>      
+
+                   <a href="index.html" class="carousel-item" data-id="curso18" onclick="checkLock(event, this)" data-locked="false">
+                    <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 3</h3>
-                            <p>Short descrition for item3.</p>
+                          <h3>Item Title 17</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 4">
+                      </a>      
+
+                  <a href="index.html" class="carousel-item" data-id="curso19" onclick="checkLock(event, this)" data-locked="false">
+                    <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 4</h3>
-                            <p>Short descrition for item4.</p>
+                          <h3>Item Title 18</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 5">
+                      </a>      
+
+                   <a href="index.html" class="carousel-item" data-id="curso20" onclick="checkLock(event, this)" data-locked="false">
+                    <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 5</h3>
-                            <p>Short descrition for item5.</p>
+                          <h3>Item Title 19</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 6">
+                      </a>      
+
+                  <a href="index.html" class="carousel-item" data-id="curso21" onclick="checkLock(event, this)" data-locked="false">
+                    <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 6</h3>
-                            <p>Short descrition for item6.</p>
+                          <h3>Item Title 20</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
-                    <a href="#" class="carousel-item">
-                        <img src="img/cursos.jpg" alt="Item 7">
+                      </a>      
+
+                   <a href="index.html" class="carousel-item" data-id="curso22" onclick="checkLock(event, this)" data-locked="false">
+                    <img src="img/cursos.jpg" alt="Curso 1">
                         <div class="carousel-description">
-                            <h3>Item Title 7</h3>
-                            <p>Short descrition for item7.</p>
+                          <h3>Item Title 21</h3>
+                          <p>Short description for item1.</p>
+                          <ion-icon name="lock-open-outline" class="lock-icon" onclick="toggleLock(event, this);"></ion-icon>
                         </div>
-                    </a>
+                      </a>      
+
                 </div>
                 <button id="prevBtn3">&#10094;</button>
                 <button id="nextBtn3">&#10095;</button>
@@ -288,7 +348,7 @@
     <script src="js/main.js"></script>
     <script src="js/cursos.js"></script>
     <script src="js/busqueda.js"></script>
-    <script type="module" src="/js/index.js"></script>
+    <script src="js/candado.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
