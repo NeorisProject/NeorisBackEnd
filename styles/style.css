@@ -661,6 +661,7 @@ body {
   text-decoration: none;
   color: #444;
   flex-shrink: 0;
+
 }
 
 .carousel-item img {
@@ -670,11 +671,6 @@ body {
   display: block;
 }
 
-.carousel-description {
-  padding: 8px 16px;
-  height: 80px;
-  overflow: hidden;
-}
 
 .carousel-container button {
   position: absolute;
@@ -936,10 +932,20 @@ ion-icon[name="information-circle-outline"] {
 .table-container {
   background: white;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible; /* Asegúrate de que no estés recortando el contenido */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin: 30px;
+  padding-bottom: 20px; /* Añade padding para evitar que el contenido toque los bordes */
 }
+
+.carousel-description {
+  padding: 8px 16px; /* Ajusta el padding según sea necesario */
+  /* Elimina el alto fijo y el overflow hidden si quieres que el contenido defina el alto */
+  /* height: auto; (esto es por defecto, así que puedes simplemente eliminar la propiedad de altura) */
+  /* overflow: visible; (esto también es por defecto, así que puedes quitar el overflow) */
+  max-width: 350px; /* Limita el ancho a lo que desees */
+}
+
 
 table {
   width: 100%;
@@ -1026,3 +1032,33 @@ td .status-circle {
 .shake {
   animation: shake 0.5s;
 }
+
+
+.topbar .user {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Puedes ajustar la brecha entre el texto y la imagen */
+}
+
+.topbar .username {
+  /* Elimina cualquier margen o padding que pueda empujar el elemento fuera de lugar */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center; /* Alinea verticalmente el texto con la imagen */
+}
+
+.topbar .username h2 {
+  margin: 0; /* Asegúrate de que el título no tenga márgenes que empujen el layout */
+  font-size: 1em; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
+/* Asegúrate de que el enlace de la imagen de perfil no tenga margen/padding innecesarios */
+.topbar a[href="miCuenta.html"] {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Elimina el subrayado de los enlaces si es necesario */
+}
+
+/* Si hay más estilos que estén interfiriendo, puedes necesitar ajustarlos o sobreescribirlos también. */
+
