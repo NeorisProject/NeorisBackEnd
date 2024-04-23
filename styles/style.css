@@ -256,6 +256,14 @@ body {
   margin-top: 5px;
 }
 
+.cardBox .card_hello:hover {
+  background: var(--blue);
+}
+
+.cardBox .card_hello:hover .cardName{
+  color: var(--white);
+}
+
 .cardBox {
   position: relative;
   width: 100%;
@@ -297,6 +305,7 @@ body {
 .cardBox .card:hover {
   background: var(--blue);
 }
+
 .cardBox .card:hover .numbers,
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
