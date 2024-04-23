@@ -209,6 +209,8 @@ body {
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .user img {
@@ -235,12 +237,31 @@ body {
 
 
 /* ======================= Cards ====================== */
+
+.card_hello {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  align-items: center;
+}
+
+.cardBox .card_hello .cardName {
+  color: var(--blue);
+  font-size: 2.5rem;
+  margin-top: 5px;
+}
+
 .cardBox {
   position: relative;
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 2fr 1fr 1fr;
   grid-gap: 30px;
 }
 
@@ -282,7 +303,13 @@ body {
   color: var(--white);
 }
 
-/* ================== Order Details List ============== */
+.coin {
+  color: rgb(255, 183, 0);
+  font-size: 3.5rem;
+}
+
+/* ====================== Graficas Inicio ========================== */
+
 .details {
   position: relative;
   width: 100%;
@@ -293,14 +320,37 @@ body {
   /* margin-top: 10px; */
 }
 
+.container-charts {
+  padding-top: 5px;
+}
+
+.chart {
+  width: auto;
+}
+
+/* Espaciador entre gráficas */
+.chartSpacer {
+  height: 20px; /* O la altura que desees para el espacio */
+}
+
+/* Aplicar un margen solo al contenedor de gráficas si es necesario */
+.chartsContainer {
+  margin-bottom: 20px; /* Ajusta este valor si es necesario */
+}
+
+
+
 .details .recentMessages {
   position: relative;
   display: grid;
-  min-height: 500px;
+  min-height: 300px;
   background: var(--white);
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
+  height: 400px;
+  width: auto;
+  margin-top: 0px;
 }
 
 .details .cardHeader {
@@ -311,6 +361,7 @@ body {
 .cardHeader h2 {
   font-weight: 600;
   color: var(--blue);
+  margin-bottom: 5px;
 }
 .cardHeader .btn {
   position: relative;
@@ -320,6 +371,19 @@ body {
   color: var(--white);
   border-radius: 6px;
 }
+
+.availableCourses .cardHeader {
+  /* Reducir o eliminar el margen/padding superior */
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.availableCourses table tr:last-child {
+  /* Aumentar el margen/padding inferior del último elemento de la tabla */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
 
 .details table {
   width: 100%;
