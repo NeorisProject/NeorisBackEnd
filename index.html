@@ -108,7 +108,7 @@
             <div class="cardBox">
                 <div class="card_hello">
                     <div>
-                        <div class="cardName" id="welcomeText">Bienvenido, Username!</div>
+                        <div class="cardName" id="welcomeText">Bienvenido</div>
                     </div>
                 </div>
 
@@ -262,7 +262,7 @@
     <script src="js/charts.js"></script>
     <script>
         // El texto completo que quieres mostrar
-        const fullText = 'Bienvenido, Usuario!';
+        const fullText = '';
         // El elemento donde quieres mostrar el texto
         const element = document.getElementById('welcomeText');
         // La velocidad con la que se añadirán las letras, en milisegundos
@@ -272,9 +272,9 @@
         element.textContent = ''; // Iniciar con el contenido vacío
       
         const typeWriter = () => {
-          if (currentIndex < fullText.length) {
+          if (currentIndex < element.length) {
             // Agregar la siguiente letra al contenido actual
-            element.textContent += fullText.charAt(currentIndex);
+            element.textContent += element.charAt(currentIndex);
             // Incrementar el índice para la siguiente letra
             currentIndex++;
             // Llamar a la función nuevamente después de un cierto tiempo
