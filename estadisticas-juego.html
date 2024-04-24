@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-sompatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>NEORIS</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
+
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -16,9 +18,10 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <img src="img/neoris-logos/Icon_light.png" alt="NEORIS" class="logo">
+                            <img src="/img/neoris-logos/Icon_light.png" alt="NEORIS" class="logo">
                         </span>
-                        <img src="img/neoris-logos/NEORIS logo light.png"NEORIS_LOGO" class="logo_secondary">
+                        <!-- <span class="title">NEORIS</span> -->
+                        <img src="/img/neoris-logos/NEORIS logo light.png" alt="NEORIS_LOGO" class="logo_secondary">
                     </a>
                 </li>
 
@@ -77,36 +80,84 @@
                 </li>
             </ul>
         </div>
+
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
-                <h2 class="profile-title">Admin</h2>
+                <h2 class="profile-title2">Estadisticas</h2>
 
                 <div class="search">
                     <label>
                         <input type="text" id="searchBar" placeholder="Buscar..." onkeyup="searchOnEnter(event)">
                         <ion-icon name="search-outline"></ion-icon>
+    
                     </label>
                 </div>
 
                 <div class="user">
                     <a href="miCuenta.html">
+                        <span id="username"></span>
                         <img src="img/customer01.jpg" alt="Profile Picture" id="indexProfileImg">
                     </a>
                 </div> 
             </div>
+        
+            <div class="main-content">
+                <div class="candado-container"></div>
+            </div>
+            <div class="white-container">
+                <h1>Estadisticas</h1>
+            </div>
 
-            <!-- ========================= Gestion Cursos Section ==================== -->
+
+
+            <div class="chartsContainer2">
+               
+    
+                <div class="chartSection2">
+                    <div class="cardHeader2">
+                        <h2>Tiempo promedio de nivel</h2>
+                    </div>
+                    <canvas id="line3"></canvas>
+                </div>
             
+                <div class="chartSection2">
+                    <div class="cardHeader2">
+                        <h2>Nivel mas jugado</h2>
+                    </div>
+                    <canvas id="line4"></canvas>
+                </div>
+            
+                <div class="chartSection2">
+                    <div class="cardHeader2">
+                        <h2>Mejores usuarios</h2>
+                    </div>
+                    <canvas id="line5"></canvas>
+                </div>
+
+                <div class="chartSection2">
+                    <div class="cardHeader2">
+                        <h2>Monedas obtenidas</h2>
+                    </div>
+                    <canvas id="line2"></canvas>
+                </div>
+
+            </div>
+
+    
+            
+        </div>
+    </div>
 
     <!-- =========== Scripts =========  -->
-    <script src="js/main.js"></script>
-    <script src="js/busqueda.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/busqueda.js"></script>
     <script type="module" src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="js/charts.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

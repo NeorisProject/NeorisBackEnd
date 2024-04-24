@@ -160,6 +160,15 @@ body {
   font-size: 1.5rem; /* o el tamaño que se ajuste a tu diseño */
 }
 
+.profile-title2 {
+  position: absolute;
+  left: 12%;
+  transform: translateX(-50%);
+  /* Asegúrate de que el título tiene suficiente contraste y visibilidad */
+  color: #000000; /* o cualquier color que combine con tu barra de navegación */
+  font-size: 1.5rem; /* o el tamaño que se ajuste a tu diseño */
+}
+
 
 .toggle {
   position: relative;
@@ -345,6 +354,36 @@ body {
 /* Aplicar un margen solo al contenedor de gráficas si es necesario */
 .chartsContainer {
   margin-bottom: 20px; /* Ajusta este valor si es necesario */
+}
+
+
+
+
+
+.chartsContainer2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Crea dos columnas */
+  grid-gap: 20px; /* Espacio entre gráficas */
+  padding: 20px; /* Espacio alrededor de la cuadrícula */
+  margin-bottom: 20px;
+}
+
+.chartSection2 {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.cardHeader2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.canvas2 {
+  width: 100%; /* Asegura que el canvas tome todo el ancho del contenedor */
+  height: auto; /* Altura automática */
 }
 
 
