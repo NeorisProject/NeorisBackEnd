@@ -4,7 +4,7 @@ const ctx = document.getElementById('line');
   const line = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      labels: ['1', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
       datasets: [{
         label: '# De Sesiones Activas',
         data: [8, 10, 3, 5, 2, 3],
@@ -24,13 +24,108 @@ const ctx = document.getElementById('line');
     }
   });
 
+  
+
   // Chart 2
   const ctx2 = document.getElementById('line2');
 
   const line2 = new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      labels: ['8', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      datasets: [{
+        label: '# Monedas totales',
+        data: [14, 18, 8, 12, 2, 20],
+        borderColor: 'rgb(27, 36, 42)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  
+
+  const ctx3 = document.getElementById('line3');
+
+  const line3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: ['1', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      datasets: [{
+        label: '# Minutos totales',
+        data: [14, 18, 8, 12, 2, 20],
+        borderColor: 'rgb(27, 36, 42)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+  const ctx4 = document.getElementById('line4');
+
+  const line4 = new Chart(ctx4, {
+    type: 'bar',
+    data: {
+      labels: ['2', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      datasets: [{
+        label: '# Jugadas totales',
+        data: [14, 18, 8, 12, 2, 20],
+        borderColor: 'rgb(27, 36, 42)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+  const ctx5 = document.getElementById('line5');
+
+  const line5 = new Chart(ctx5, {
+    type: 'bar',
+    data: {
+      labels: ['3', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      datasets: [{
+        label: '# Puntos totales',
+        data: [14, 18, 8, 12, 2, 20],
+        borderColor: 'rgb(27, 36, 42)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+
+  const ctx6 = document.getElementById('line6');
+
+  const line6 = new Chart(ctx6, {
+    type: 'line',
+    data: {
+      labels: ['4', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
       datasets: [{
         label: '# Monedas totales',
         data: [14, 18, 8, 12, 2, 20],
