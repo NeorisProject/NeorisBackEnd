@@ -147,7 +147,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
 }
 
 /* Estilos específicos para el título "Perfil" */
@@ -190,6 +189,13 @@ body {
 .search label {
   position: relative;
   width: 100%;
+}
+.search ion-icon {
+  position: absolute; /* Posicionamiento absoluto del ícono respecto a su contenedor .search */
+  right: 10px; /* Coloca el ícono a la derecha del campo de búsqueda */
+  top: 50%; /* Inicia la posición en el 50% de la altura del contenedor */
+  transform: translateY(75%); /* Ajusta el ícono hacia arriba en un 50% de su altura para centrarlo verticalmente */
+  pointer-events: none; /* Evita que el ícono interfiera con la entrada de texto */
 }
 
 .search label input {
