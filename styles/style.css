@@ -806,6 +806,98 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* ====================== Gestion FAQ ========================== */
+
+/* Estilos básicos para el fondo y la estructura del modal */
+.estilo-modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Scroll si es necesario */
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+  z-index: 1000; /* Asegura que el modal esté sobre otros elementos */
+}
+
+.contenido-modal {
+  background-color: white; /* Fondo blanco */
+  border-radius: 15px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 20px; /* Espaciado interno */
+  margin: 10% auto; /* Posicionamiento vertical y centrado */
+  width: 50%; /* Ancho del contenido */
+  box-sizing: border-box; /* Asegura que padding y border estén incluidos en el ancho total */
+  position: relative; /* Para posicionamiento absoluto de elementos internos */
+}
+
+/* Estilo para el botón de cerrar al estilo de la tarjeta */
+.cerrar-modal {
+  position: absolute; /* Posicionamiento absoluto respecto al contenedor */
+  right: 10px; /* A la derecha del contenedor */
+  top: 10px; /* En la parte superior del contenedor */
+  background-color: var(--blue); /* Uso de la variable --blue para el botón */
+  color: white; /* Color de texto */
+  border: none; /* Sin borde */
+  border-radius: 50%; /* Círculo completo */
+  padding: 5px 10px; /* Espaciado interno */
+  cursor: pointer; /* Cursor de puntero */
+  font-weight: bold; /* Negrita */
+}
+
+.cerrar-modal:hover {
+  background-color: darken(var(--blue), 10%); /* Oscurecer el botón al pasar el ratón */
+}
+
+/* Estilos adicionales para el formulario y otros elementos internos pueden seguir aquí... */
+
+
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+  color: var(--blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilos para los formularios y elementos dentro del modal */
+.grupo-formulario {
+  margin-bottom: 10px;
+}
+
+.grupo-formulario label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para los botones del formulario */
+.acciones-formulario button,
+.acciones-formulario input[type="submit"] {
+  background-color: var(--blue);
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.acciones-formulario button:hover,
+.acciones-formulario input[type="submit"]:hover {
+  background-color: var(--blue);
+}
+
+
 /* Grid Navigation Styles */
 .grid-nav {
   display: grid;

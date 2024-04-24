@@ -110,41 +110,47 @@
                 </div>
     
                 <div class="grid-nav">
-                    <a href="#" class="grid-item" onclick="showAddFaq()">Agregar FAQ</a>
-                    <a href="#" class="grid-item" onclick="showRemoveFaq()">Eliminar FAQ</a>
+                    <a href="#" class="grid-item" onclick="activarModalEdicion(10); return false;">Agregar FAQ</a>
+                    <a href="#" class="grid-item" onclick="activarModalEliminar(10);">Eliminar FAQ</a>
                 </div>
 
-                <!-- Modales para Agregar y Eliminar FAQ -->
-                <div id="addFaqModal" class="modal" style="display:none;">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeAddFaqModal()">&times;</span>
-                        <form id="addFaqForm">
-                            <div class="form-group">
-                                <label for="faqQuestion">Pregunta:</label>
-                                <input type="text" id="faqQuestion" name="question" required>
+                <!-- Modal Agregar FAQ -->
+                <div id="modalAgregarFAQ" class="estilo-modal">
+                    <div class="contenido-modal">
+                        <span class="cerrar-modal" onclick="cerrarModalEdicion()">&times;</span>
+                        <form id="formularioFAQ">
+                            <!-- Campos del formulario de edición -->
+                            <div class="grupo-formulario">
+                                <label for="preguntaFAQ">Pregunta Frecuente:</label>
+                                <input type="text" id="preguntaFAQ" name="preguntaFAQ" required>
                             </div>
-                            <div class="form-group">
-                                <label for="faqAnswer">Respuesta:</label>
-                                <textarea id="faqAnswer" name="answer" required></textarea>
+                            <div class="grupo-formulario">
+                                <label for="respuestaFAQ">Respuesta:</label>
+                                <textarea id="respuestaFAQ" name="respuestaFAQ" required></textarea>
                             </div>
-                            <div class="form-actions">
-                                <button type="button" onclick="closeAddFaqModal()">Cancelar</button>
+                            <!-- Agrega más campos según sea necesario -->
+                            <div class="acciones-formulario">
+                                <button type="button" onclick="cerrarModalEdicion()">Cancelar</button>
                                 <input type="submit" value="Agregar FAQ">
                             </div>
                         </form>
                     </div>
                 </div>
-                <div id="removeFaqModal" class="modal" style="display:none;">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeRemoveFaqModal()">&times;</span>
-                        <form id="removeFaqForm">
-                            <div class="form-group">
-                                <label for="faqId">ID del FAQ:</label>
-                                <input type="number" id="faqId" name="faqId" required>
+
+                <!-- Modal Eliminar FAQ -->
+                <div id="modalEliminarFAQ" class="estilo-modal">
+                    <div class="contenido-modal">
+                        <span class="cerrar-modal" onclick="cerrarModalEliminar()">&times;</span>
+                        <form id="formularioEliminarFAQ">
+                            <div class="grupo-formulario">
+                                <label for="seleccionarFAQ">Selecciona la FAQ que deseas eliminar:</label>
+                                <select id="seleccionarFAQ" name="seleccionarFAQ" required>
+                                    <!-- Las opciones se llenarán dinámicamente desde JavaScript -->
+                                </select>
                             </div>
-                            <div class="form-actions">
-                                <button type="button" onclick="closeRemoveFaqModal()">Cancelar</button>
-                                <input type="submit" value="Eliminar FAQ">
+                            <div class="acciones-formulario">
+                                <button type="button" onclick="cerrarModalEliminar()">Cancelar</button>
+                                <button type="submit">Eliminar FAQ</button>
                             </div>
                         </form>
                     </div>
@@ -156,29 +162,78 @@
     <script src="js/busqueda.js"></script>
     <script type="module" src="/js/index.js"></script>
     <script>
+        // Función para activar el modal de edición
+        function activarModalEdicion(faqId) {
+            console.log("Activar modal de edición para el curso ID:", faqId);
+            var modal = document.getElementById('modalAgregarFAQ');
+            modal.style.display = 'block';
+            // Carga aquí los datos del curso si es necesario
+        }
 
-    // JavaScript functions to handle modal logic
-    function showAddFaq() {
-        var modal = document.getElementById('addFaqModal');
-        modal.style.display = 'block';
-    }
+        // Función para cerrar el modal de edición
+        function cerrarModalEdicion() {
+            var modal = document.getElementById('modalAgregarFAQ');
+            modal.style.display = 'none';
+        }
 
-    function showRemoveFaq() {
-        var modal = document.getElementById('removeFaqModal');
-        modal.style.display = 'block';
-    }
+        // Evento para cerrar el modal al hacer clic en la cruz o fuera del modal
+        window.onclick = function(event) {
+            var modal = document.getElementById('modalAgregarFAQ');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+    <script>
+        // Supongamos que tienes un array de objetos FAQ disponibles en tu aplicación
+        const faqs = [
+            { id: 1, pregunta: "¿Cómo restablezco mi contraseña?" },
+            { id: 2, pregunta: "¿Dónde encuentro mis cursos?" },
+            { id: 3, pregunta: "¿Cómo contacto soporte técnico?" }
+            // Añadir más FAQs según necesario
+        ];
 
-    // Functions to close modals
-    function closeAddFaqModal() {
-        var modal = document.getElementById('addFaqModal');
-        modal.style.display = 'none';
-    }
+        // Función para activar el modal de eliminación
+        function activarModalEliminar() {
+            console.log("Activar modal de eliminación de FAQ");
+            var modal = document.getElementById('modalEliminarFAQ');
+            var select = document.getElementById('seleccionarFAQ');
+            
+            // Limpiar opciones existentes primero
+            select.innerHTML = '';
+            // Llenar el dropdown con las FAQs
+            faqs.forEach(faq => {
+                var option = document.createElement('option');
+                option.value = faq.id;
+                option.textContent = faq.pregunta;
+                select.appendChild(option);
+            });
 
-    function closeRemoveFaqModal() {
-        var modal = document.getElementById('removeFaqModal');
-        modal.style.display = 'none';
-    }
+            modal.style.display = 'block';
+        }
 
+        // Función para cerrar el modal de eliminación
+        function cerrarModalEliminar() {
+            var modal = document.getElementById('modalEliminarFAQ');
+            modal.style.display = 'none';
+        }
+
+        // Reutilizar el mismo manejador de eventos para cerrar el modal cuando se hace clic fuera
+        window.onclick = function(event) {
+            var modalEliminar = document.getElementById('modalEliminarFAQ');
+            if (event.target == modalEliminar) {
+                modalEliminar.style.display = 'none';
+            }
+        }
+
+        // Evento submit para el formulario de eliminación
+        document.getElementById('formularioEliminarFAQ').addEventListener('submit', function(event) {
+            event.preventDefault();  // Evitar el envío del formulario
+            var faqId = document.getElementById('seleccionarFAQ').value;
+            console.log('FAQ a eliminar:', faqId);
+            // Aquí iría el código para eliminar la FAQ del servidor o base de datos
+            cerrarModalEliminar();
+        });
     </script>
 
     <!-- ====== ionicons ======= -->
