@@ -101,13 +101,85 @@
                 </div> 
             </div>
 
-            <!-- ========================= Gestion Cursos Section ==================== -->
-            
+                <!-- ========================= Gestion FAQ Section ==================== -->
+                <div class="main-content">
+                    <div class="faq-container"></div>
+                </div>
+                <div class="white-container">
+                    <h1>Gestión de FAQ</h1>
+                </div>
+    
+                <div class="grid-nav">
+                    <a href="#" class="grid-item" onclick="showAddFaq()">Agregar FAQ</a>
+                    <a href="#" class="grid-item" onclick="showRemoveFaq()">Eliminar FAQ</a>
+                </div>
 
+                <!-- Modales para Agregar y Eliminar FAQ -->
+                <div id="addFaqModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeAddFaqModal()">&times;</span>
+                        <form id="addFaqForm">
+                            <div class="form-group">
+                                <label for="faqQuestion">Pregunta:</label>
+                                <input type="text" id="faqQuestion" name="question" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="faqAnswer">Respuesta:</label>
+                                <textarea id="faqAnswer" name="answer" required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" onclick="closeAddFaqModal()">Cancelar</button>
+                                <input type="submit" value="Agregar FAQ">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="removeFaqModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeRemoveFaqModal()">&times;</span>
+                        <form id="removeFaqForm">
+                            <div class="form-group">
+                                <label for="faqId">ID del FAQ:</label>
+                                <input type="number" id="faqId" name="faqId" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" onclick="closeRemoveFaqModal()">Cancelar</button>
+                                <input type="submit" value="Eliminar FAQ">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+        </div>
     <!-- =========== Scripts =========  -->
     <script src="js/main.js"></script>
     <script src="js/busqueda.js"></script>
     <script type="module" src="/js/index.js"></script>
+    <script>
+
+    // JavaScript functions to handle modal logic
+    function showAddFaq() {
+        var modal = document.getElementById('addFaqModal');
+        modal.style.display = 'block';
+    }
+
+    function showRemoveFaq() {
+        var modal = document.getElementById('removeFaqModal');
+        modal.style.display = 'block';
+    }
+
+    // Functions to close modals
+    function closeAddFaqModal() {
+        var modal = document.getElementById('addFaqModal');
+        modal.style.display = 'none';
+    }
+
+    function closeRemoveFaqModal() {
+        var modal = document.getElementById('removeFaqModal');
+        modal.style.display = 'none';
+    }
+
+    </script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
