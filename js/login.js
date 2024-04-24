@@ -6,6 +6,7 @@ import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/fire
 
 //import {saveUserLogin , getUserSignUp, saveUserSignUp,getUserSignUp} from './firebase.js'
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 const signinForm = document.getElementById('signin-form');
 const googleSignUpButton  = document.getElementById("signupGoogle");
@@ -33,7 +34,7 @@ window.addEventListener('DOMContentLoaded', async()=>{
 });
 */
     
-signinForm.addEventListener('submit', (e) => {
+signinForm.addEventListener('submit', async(e) => {
     e.preventDefault(); // Esto evitará que el formulario se envíe y agregue los datos a la URL
 
     const emailInput = document.getElementById('loginEmail');
@@ -42,6 +43,28 @@ signinForm.addEventListener('submit', (e) => {
     const email = emailInput.value;
     const password = passwordInput.value;
 
+    try {
+        const userCredential = await signInWithEmail(email, password);
+        const user = userCredential.user;
+        console.log('User Logged In Correctly', user);
+
+        // Verifica si el usuario es un administrador
+        const userDocRef = doc(db, "admin", user.uid);
+        const adminDocSnap = await getDoc(userDocRef);
+
+        if (adminDocSnap.exists()) {
+            // Si es administrador, redirige al dashboard de admin
+            window.location.href = 'index-admin.html';
+            console.log('Pestaña de admin')
+        } else {
+            // Si es un usuario normal, redirige al dashboard de usuario
+            window.location.href = 'index.html';
+            console.log('Pestana de user')
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        // Manejo del error de inicio de sesión aquí...
+    }
 
 
     // Call the saveUserLogin function and pass the email and password
@@ -136,11 +159,6 @@ signupForm.addEventListener('submit', async (e) => {
     }
 
 });
-
-
-
-
-
 
 googleSignUpButton.addEventListener("click", (e) => {
     e.preventDefault(); // Evita el comportamiento por defecto del botón (navegar a un enlace).

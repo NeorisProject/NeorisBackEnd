@@ -88,17 +88,18 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
                 <h2 class="profile-title">Inicio</h2>
+
                 <div class="search">
                     <label>
                         <input type="text" id="searchBar" placeholder="Buscar..." onkeyup="searchOnEnter(event)">
                         <ion-icon name="search-outline"></ion-icon>
+    
                     </label>
                 </div>
 
                 <div class="user">
                     <a href="miCuenta.html">
                         <span id="username"></span>
-
                         <img src="img/customer01.jpg" alt="Profile Picture" id="indexProfileImg">
                     </a>
                 </div> 
@@ -106,20 +107,15 @@
         
             <!-- ======================= Statistic Cards ================== -->
             <div class="cardBox">
-                <div class="card">
+                <div class="card_hello">
                     <div>
-                        <div class="numbers">78</div>
-                        <div class="cardName">Completion courses</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="trophy"></ion-icon>
+                        <div class="cardName" id="welcomeText">Bienvenido</div>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">3</div>
+                        <div class="numbers">4</div>
                         <div class="cardName">Courses On Going</div>
                     </div>
 
@@ -130,103 +126,47 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Messages</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
                         <div class="numbers">455</div>
-                        <div class="cardName">Points</div>
+                        <div class="cardName">Monedas</div>
                     </div>
 
-                    <div class="iconBx">
-                        <ion-icon name="ribbon"></ion-icon>
+                    <div class="coin">
+                        <ion-icon name="radio-button-on"></ion-icon >
                     </div>
                 </div>
             </div>
 
-            <!-- ================ Recent Messages List ================= -->
+            <!-- ================ Graphs ================= -->
+            
             <div class="details">
-                <div class="recentMessages">
-                    <div class="cardHeader">
-                        <h2>Notifications</h2>
-                        <a href="#" class="btn">View All</a>
+                <!-- Gráficas Container Start -->
+                <div class="chartsContainer">
+                    <div class="recentMessages">
+                        <div class="cardHeader">
+                            <h2>Actividad Diaria</h2>
+                            <a href="#" class="btn">View All</a>
+                        </div>
+                        <div class="container-charts">
+                            <div class="chart">
+                            <canvas id="line"></canvas>
+                            </div>
+                        </div>
                     </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Username</td>
-                                <td>Subject</td>
-                                <td>Time</td>
-                                <td>Priority</td>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Diego Larrieta</td>
-                                <td>Cyber Games LATAM 2024 de Cisco</td>
-                                <td>8:58 PM</td>
-                                <td><span class="status delivered">Normal</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Pancho Naranjas</td>
-                                <td>Prepare students for jobs in the immersive economy</td>
-                                <td>8:25 PM</td>
-                                <td><span class="status pending">High</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Enrique Macias</td>
-                                <td>Taller Multijugador Unity en linea</td>
-                                <td>7:46 PM</td>
-                                <td><span class="status return">Urgent</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Sheccid Lejia</td>
-                                <td>MS Mock Interview Workshop</td>
-                                <td>7:23 PM</td>
-                                <td><span class="status inProgress">Low</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Hector Tamez</td>
-                                <td>Información del I-Hack Tec</td>
-                                <td>6:30 PM</td>
-                                <td><span class="status delivered">Normal</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Juan Lopez</td>
-                                <td>Plática con CHUBB</td>
-                                <td>5:45 PM</td>
-                                <td><span class="status pending">High</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Fernanda Alvarez</td>
-                                <td>MongoDB</td>
-                                <td>2:34 PM</td>
-                                <td><span class="status return">Urgent</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Ilai Galarza</td>
-                                <td>Inforys</td>
-                                <td>10:50 AM</td>
-                                <td><span class="status inProgress">Low</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
+                    <!-- Espaciador entre gráficas -->
+                    <div class="chartSpacer"></div>
+                    
+                    <div class="recentMessages">
+                        <div class="cardHeader">
+                            <h2>Monedas obtenidas</h2>
+                            <a href="#" class="btn">View All</a>
+                        </div>
+                        <div class="container-charts">
+                            <div class="chart">
+                            <canvas id="line2"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ================= Available Courses ================ -->
@@ -319,6 +259,33 @@
     <script src="/js/main.js"></script>
     <script src="/js/busqueda.js"></script>
     <script type="module" src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="js/charts.js"></script>
+    <script>
+        // El texto completo que quieres mostrar
+        const fullText = '';
+        // El elemento donde quieres mostrar el texto
+        const element = document.getElementById('welcomeText');
+        // La velocidad con la que se añadirán las letras, en milisegundos
+        const typingSpeed = 150; 
+        let currentIndex = 0;
+      
+        element.textContent = ''; // Iniciar con el contenido vacío
+      
+        const typeWriter = () => {
+          if (currentIndex < element.length) {
+            // Agregar la siguiente letra al contenido actual
+            element.textContent += element.charAt(currentIndex);
+            // Incrementar el índice para la siguiente letra
+            currentIndex++;
+            // Llamar a la función nuevamente después de un cierto tiempo
+            setTimeout(typeWriter, typingSpeed);
+          }
+        };
+      
+        // Iniciar la animación de escritura
+        typeWriter();
+      </script>
 
 
     <!-- ====== ionicons ======= -->

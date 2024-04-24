@@ -299,11 +299,11 @@
                             </tr>
 
                                   </div>
-                                  <div id="editCourseModal" class="modal">
+                                  <div id="addCourseModal" class="modal">
                                     <div class="modal-content">
                                       <span class="close">&times;</span>
                            
-                                      <form id="editCourseForm">
+                                      <form id="addCourseForm">
                                         <!-- Nombre del curso -->
                                         <div class="form-group">
                                           <label for="editCourseName">Nombre del curso:</label>
@@ -313,7 +313,7 @@
                                         <!-- Descripción del curso -->
                                         <div class="form-group">
                                           <label for="editCourseDescription">Descripción del curso:</label>
-                                          <textarea id="editCourseDescription" name="courseDescription" required></textarea>
+                                          <input type="text" id="editCourseDescription" name="courseName" required>
                                         </div>
                                         
                                         <!-- Categoría del curso -->
@@ -341,7 +341,7 @@
                                         <!-- Botones de acción -->
                                         <div class="form-actions">
                                           <button type="button" onclick="closeEditModal()">Cancelar</button>
-                                          <input type="submit" value="Guardar Cambios">
+                                          <input type="submit" id='submit' value="Guardar Cambios">
                                         </div>
                                       </form>
                                     </div>
@@ -363,6 +363,7 @@
     <script src="js/users-table.js"></script>
     <script src="js/editar.js"></script>
     <script type="module" src="/js/index.js"></script>
+    <script type="module" src="/js/gestionarCursos.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
