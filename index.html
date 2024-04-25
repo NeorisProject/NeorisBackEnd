@@ -256,36 +256,11 @@
     </div>
 
     <!-- =========== Scripts =========  -->
-    <script src="/js/main.js"></script>
-    <script src="/js/busqueda.js"></script>
-    <script type="module" src="/js/index.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/busqueda.js"></script>
+    <script type="module" src="js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script src="js/charts.js"></script>
-    <script>
-        // El texto completo que quieres mostrar
-        const fullText = '';
-        // El elemento donde quieres mostrar el texto
-        const element = document.getElementById('welcomeText');
-        // La velocidad con la que se añadirán las letras, en milisegundos
-        const typingSpeed = 150; 
-        let currentIndex = 0;
-      
-        element.textContent = ''; // Iniciar con el contenido vacío
-      
-        const typeWriter = () => {
-          if (currentIndex < element.length) {
-            // Agregar la siguiente letra al contenido actual
-            element.textContent += element.charAt(currentIndex);
-            // Incrementar el índice para la siguiente letra
-            currentIndex++;
-            // Llamar a la función nuevamente después de un cierto tiempo
-            setTimeout(typeWriter, typingSpeed);
-          }
-        };
-      
-        // Iniciar la animación de escritura
-        typeWriter();
-      </script>
 
 
     <!-- ====== ionicons ======= -->
