@@ -1,6 +1,6 @@
 import { signInWithGoogle,signUpWithGoogle} from './firebase.js'
 import {registerWithEmail , signInWithEmail,app} from './firebase.js'
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import {  getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"
 import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
