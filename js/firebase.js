@@ -4,6 +4,7 @@ import {  getFirestore ,collection, addDoc, getDocs } from "https://www.gstatic.
 
 import { getAuth , GoogleAuthProvider  , signInWithPopup,  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
 //import {getFirestore } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,20 +21,22 @@ const firebaseConfig = {
 };
   
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+export { db };
 
-export {app};
+// Exportaciones previas...
+export { app };
 
-//Authentication 
+//Authentication
 const auth = getAuth();
-export {auth};
+export { auth };
 
-auth.languageCode = 'en'
+auth.languageCode = 'en';
 
 const provider = new GoogleAuthProvider();
+export { provider };
 
-const db = getFirestore(app);
 //Nuevas pruebas
 export const registerWithEmail = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
