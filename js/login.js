@@ -49,6 +49,12 @@ signinForm.addEventListener('submit', (e) => {
     .then((userCredential) => {
         console.log('User Logged In Correctly !', userCredential.user);
 
+        // Aquí es donde actualizamos el lastActive del usuario en Firestore
+        const userDocRef = doc(db, "users", userCredential.user.uid);
+        setDoc(userDocRef, {
+          lastActive: serverTimestamp()
+        }, { merge: true });
+
         const successMessage = document.createElement('div');
         successMessage.textContent = 'Inicio de sesión exitoso';
         successMessage.className = 'success-message'; // Asegúrate de definir este estilo en tu CSS

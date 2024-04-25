@@ -40,4 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }, (error) => {
         console.error("Error al obtener nuevos usuarios de hoy:", error);
     });
+
+    // Referencia a la colección de usuarios y la consulta para los activos hoy
+  const queryActiveUsersToday = query(usersCollectionRef, where("lastActive", ">=", startOfTodayTimestamp));
+
+  // Escuchar los documentos de usuarios activos hoy
+  onSnapshot(queryActiveUsersToday, (snapshot) => {
+    const activosUsuariosElement = document.getElementById('activosUsuarios');
+    if (activosUsuariosElement) {
+        activosUsuariosElement.textContent = snapshot.size;
+    } else {
+        console.error('Elemento activosUsuarios no encontrado');
+    }
+  }, (error) => {
+    console.error("Error al obtener usuarios activos de hoy:", error);
+  });
+
+
 });
