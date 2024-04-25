@@ -2,6 +2,7 @@ import { signInWithGoogle,signUpWithGoogle} from './firebase.js'
 import {registerWithEmail , signInWithEmail,app} from './firebase.js'
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import {  getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"
+import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 //import {saveUserLogin , getUserSignUp, saveUserSignUp,getUserSignUp} from './firebase.js'
 const db = getFirestore(app);
@@ -100,7 +101,8 @@ signupForm.addEventListener('submit', async (e) => {
         await setDoc(doc(db, "users", userCredential.user.uid), {
             name: name,
             birthday: birthday,
-            department: department
+            department: department,
+            createdAt: serverTimestamp()
         });
 
         console.log('User additional information saved to Firestore');
