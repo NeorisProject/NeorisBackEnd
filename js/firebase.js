@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import {  getFirestore ,collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"
+import {  getFirestore ,collection, addDoc, getDocs, serverTimestamp, query } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"
 
 import { getAuth , GoogleAuthProvider  , signInWithPopup,  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
@@ -23,7 +23,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-export { db };
+export { db, collection, addDoc, getDocs, serverTimestamp, query};
 
 // Exportaciones previas...
 export { app };
