@@ -6,7 +6,6 @@ import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/fire
 
 //import {saveUserLogin , getUserSignUp, saveUserSignUp,getUserSignUp} from './firebase.js'
 const db = getFirestore(app);
-const auth = getAuth(app);
 
 const signinForm = document.getElementById('signin-form');
 const googleSignUpButton  = document.getElementById("signupGoogle");
