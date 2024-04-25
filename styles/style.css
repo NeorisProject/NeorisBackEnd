@@ -1219,10 +1219,12 @@ td .status-circle {
   font-size: 22px;
   overflow: hidden;
   padding-top: 15px;
+  
 }
 
 .faq-answer {
   margin-bottom: 1em;
  font-size: 20px;
  line-height: 1.5;
+ border-bottom: 1px solid #222;
 }
