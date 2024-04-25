@@ -110,9 +110,10 @@
                 </div>
     
                 <div class="grid-nav">
-                    <a href="#" class="grid-item" onclick="activarModalEdicion(10); return false;">Agregar FAQ</a>
-                    <a href="#" class="grid-item" onclick="activarModalEliminar(10);">Eliminar FAQ</a>
+                    <a href="#" class="grid-item" onclick="activarModalEdicion(); return false;">Agregar FAQ</a>
+                    <a href="#" class="grid-item" onclick="activarModalEliminar(); return false;">Eliminar FAQ</a>
                 </div>
+                  
 
                 <!-- Modal Agregar FAQ -->
                 <div id="modalAgregarFAQ" class="estilo-modal">
@@ -157,10 +158,7 @@
                 </div>
 
         </div>
-    <!-- =========== Scripts =========  -->
-    <script src="js/main.js"></script>
-    <script src="js/busqueda.js"></script>
-    <script type="module" src="/js/index.js"></script>
+   
     <script>
         // Función para activar el modal de edición
         function activarModalEdicion(faqId) {
@@ -186,31 +184,33 @@
     </script>
     <script>
         // Supongamos que tienes un array de objetos FAQ disponibles en tu aplicación
-        const faqs = [
-            { id: 1, pregunta: "¿Cómo restablezco mi contraseña?" },
-            { id: 2, pregunta: "¿Dónde encuentro mis cursos?" },
-            { id: 3, pregunta: "¿Cómo contacto soporte técnico?" }
-            // Añadir más FAQs según necesario
-        ];
 
         // Función para activar el modal de eliminación
-        function activarModalEliminar() {
+        async function activarModalEliminar() {
             console.log("Activar modal de eliminación de FAQ");
             var modal = document.getElementById('modalEliminarFAQ');
             var select = document.getElementById('seleccionarFAQ');
             
-            // Limpiar opciones existentes primero
-            select.innerHTML = '';
-            // Llenar el dropdown con las FAQs
-            faqs.forEach(faq => {
-                var option = document.createElement('option');
-                option.value = faq.id;
-                option.textContent = faq.pregunta;
-                select.appendChild(option);
-            });
+            try {
+                // Limpiar opciones existentes primero
+                select.innerHTML = '';
 
-            modal.style.display = 'block';
+                // Obtener FAQs de Firestore y llenar el dropdown
+                const querySnapshot = await getDocs(collection(db, "faqs"));
+                querySnapshot.forEach((docSnapshot) => {
+                    // Aquí debería ser 'doc' en lugar de 'docSnapshot'
+                    var option = document.createElement('option');
+                    option.value = doc.id; // Debe ser 'doc.id' en lugar de 'docSnapshot.id'
+                    option.textContent = doc.data().pregunta; // Debe ser 'doc.data().pregunta' en lugar de 'docSnapshot.data().pregunta'
+                    select.appendChild(option);
+                });
+
+                modal.style.display = 'block';
+            } catch (error) {
+                console.error("Error al cargar FAQs:", error);
+            }
         }
+
 
         // Función para cerrar el modal de eliminación
         function cerrarModalEliminar() {
@@ -227,17 +227,33 @@
         }
 
         // Evento submit para el formulario de eliminación
-        document.getElementById('formularioEliminarFAQ').addEventListener('submit', function(event) {
+        document.getElementById('formularioEliminarFAQ').addEventListener('submit', async function(event) {
             event.preventDefault();  // Evitar el envío del formulario
             var faqId = document.getElementById('seleccionarFAQ').value;
-            console.log('FAQ a eliminar:', faqId);
-            // Aquí iría el código para eliminar la FAQ del servidor o base de datos
+            await eliminarFAQ(faqId);
             cerrarModalEliminar();
         });
     </script>
 
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- Firebase Libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+
+<!-- Firebase Config -->
+<script type="module" src="js/firebase.js"></script>
+
+<!-- Custom Scripts que dependen de Firebase y por lo tanto son módulos -->
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/busqueda.js"></script>
+<script type="module" src="js/index.js"></script>
+<script type="module" src="js/gestionarfaq.js"></script>
+
+<!-- Ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+
 </body>
 </html>

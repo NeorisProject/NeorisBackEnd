@@ -1212,3 +1212,17 @@ td .status-circle {
 
 /* Si hay más estilos que estén interfiriendo, puedes necesitar ajustarlos o sobreescribirlos también. */
 
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  font-size: 22px;
+  overflow: hidden;
+  padding-top: 15px;
+}
+
+.faq-answer {
+  margin-bottom: 1em;
+ font-size: 20px;
+ line-height: 1.5;
+}
