@@ -26,7 +26,12 @@
                 <span>o usa tu correo para registrarte</span>
                 <input type="text" name="name" id="name"placeholder="Nombre" required>
                 <input type="email" name="email" id="signupEmail" placeholder="Correo" required>
-                <input type="password" name="password" id="signupPassword" placeholder="Contraseña" required>
+                <div class="password-container">
+                    <input type="password" name="password" id="signupPassword" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('signupPassword')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
                 <input type="date" name="fechaNac" id="fechaNac" placeholder="Fecha de Nacimiento">
                 <input type="text" name="empresa" id="departamento" placeholder="Departamento">
                 <button type="submit">Crear cuenta</button>
@@ -44,7 +49,12 @@
                 </div>
                 <span>o usa tu correo y contraseña</span>
                 <input type="email" id="loginEmail" placeholder="Email" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
+                <div class="password-container">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('loginPassword')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
                 <a href="#">¿Olvidaste tu contraseña?</a>
                 <button type="submit" id="loginButton">Iniciar sesión</button>
             </form>
