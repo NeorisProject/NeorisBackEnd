@@ -243,3 +243,17 @@ body{
         visibility: hidden;
     }
 }
+
+/* Estilo para el ícono de mostrar/ocultar contraseña */
+.toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 55px;
+    top: 59%;
+    transform: translateY(-50%);
+  }
+  
+  /* Asegúrate de ajustar el padding del input para hacer espacio para el ícono */
+  input[type="password"] {
+    padding-right: 40px; /* Ajustar según sea necesario */
+  }

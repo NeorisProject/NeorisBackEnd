@@ -49,8 +49,8 @@ function createCourseElement(course) {
   img.src = course.coursePicture;
   img.alt = course.nombre;
 
-  const carouselDescription = document.createElement('div');
-  carouselDescription.className = 'carousel-description';
+  const description = document.createElement('div');
+  description.className = 'carousel-description';
 
   const h3 = document.createElement('h3');
   h3.textContent = course.nombre;
@@ -63,17 +63,15 @@ function createCourseElement(course) {
   icon.className = 'lock-icon';
   // Add event listener if necessary for toggleLock
 
-  carouselDescription.appendChild(h3);
-  carouselDescription.appendChild(p);
-  carouselDescription.appendChild(icon);
+  description.appendChild(h3);
+  description.appendChild(p);
+  description.appendChild(icon);
 
   courseItem.appendChild(img);
-  courseItem.appendChild(carouselDescription);
+  courseItem.appendChild(description);
 
   return courseItem;
 }
-
-
 
 
 // Organiza los cursos por categoría
@@ -96,71 +94,46 @@ function updateDOMWithCourses(coursesByCategory) {
     if (carouselElement) {
       carouselElement.innerHTML = ''; 
       coursesByCategory[category].forEach(course => {
-      const courseElement = createCourseElement(course);
-      carouselElement.appendChild(courseElement);
+        const courseElement = createCourseElement(course);
+        carouselElement.appendChild(courseElement);
       });
+      setupCarousel(carouselId, `prevBtn${category}`, `nextBtn${category}`);
     } else {
       console.log(`Carousel element not found for category: ${category}`);
     }
   });
 }
-/*
+
 //Configuracion de Carusell
+
 function setupCarousel(carouselSlideId, prevBtnId, nextBtnId) {
-    const imageWrapper = document.querySelector(`#${carouselSlideId}`);
-    let imageItems = imageWrapper.querySelectorAll('.carousel-item');
-    let currentIndex = 0;
-    const delay = 2000;
-    const perView = 3;
-  
-    for (let i = 0; i < perView; i++) {
-      const clone = imageItems[i].cloneNode(true);
-      imageWrapper.appendChild(clone);
-    }
-  
-    const itemWidth = imageItems[0].offsetWidth + parseInt(getComputedStyle(imageItems[0]).marginRight);
-  
-    function updateCarousel() {
-      imageWrapper.style.transition = 'transform 0.3s ease-out';
-      imageWrapper.style.transform = `translateX(${-itemWidth * currentIndex}px)`;
-    }
-  
-    imageWrapper.addEventListener('transitionend', () => {
-      imageItems = imageWrapper.querySelectorAll('.carousel-item');
-      if (currentIndex >= imageItems.length - perView) {
-        imageWrapper.style.transition = 'none';
-        currentIndex = 0;
-        imageWrapper.style.transform = `translateX(${0}px)`;
-      }
-    });
-  
-    let autoScroll = setInterval(() => {
-      currentIndex++;
-      updateCarousel();
-    }, delay);
-  
-    imageWrapper.addEventListener('mouseenter', () => clearInterval(autoScroll));
-    imageWrapper.addEventListener('mouseleave', () => autoScroll = setInterval(() => {
-      currentIndex++;
-      updateCarousel();
-    }, delay));
-  
-    document.getElementById(prevBtnId).addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + imageItems.length) % imageItems.length;
-      updateCarousel();
-    });
-  
-    document.getElementById(nextBtnId).addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % imageItems.length;
-      updateCarousel();
-    });
+  const carousel = document.getElementById(carouselSlideId);
+  const prevButton = document.getElementById(prevBtnId);
+  const nextButton = document.getElementById(nextBtnId);
+
+  if (!carousel || !prevButton || !nextButton) {
+    console.error(`Carousel or buttons not found for ${carouselSlideId}`);
+    return;
   }
+
+  let index = 0;
+  const items = carousel.getElementsByClassName('carousel-item');
+  const totalItems = items.length;
+
+  function updateCarousel() {
+    const itemWidth = items[0].offsetWidth;
+    carousel.style.transform = `translateX(${-itemWidth * index}px)`;
+  }
+
+  prevButton.addEventListener('click', () => {
+    index = (index > 0) ? index - 1 : totalItems - 1;
+    updateCarousel();
+  });
+
+  nextButton.addEventListener('click', () => {
+    index = (index < totalItems - 1) ? index + 1 : 0;
+    updateCarousel();
+  });
+}
   
-  // Setup the first carousel
-  setupCarousel('carouselSlide', 'prevBtn', 'nextBtn');
-  // Setup the second carousel
-  setupCarousel('carouselSlide2', 'prevBtn2', 'nextBtn2');
-  // Setup the third carousel
-  setupCarousel('carouselSlide3', 'prevBtn3', 'nextBtn3');
-*/
-  fetchCoursesAndDisplay();
+document.addEventListener('DOMContentLoaded', fetchCoursesAndDisplay);
