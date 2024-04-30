@@ -38,7 +38,6 @@ signinForm.addEventListener('submit', async(e) => {
 
     const emailInput = document.getElementById('loginEmail');
     const passwordInput = document.getElementById('loginPassword');
-    
     const email = emailInput.value;
     const password = passwordInput.value;
 
@@ -47,9 +46,16 @@ signinForm.addEventListener('submit', async(e) => {
         const user = userCredential.user;
         console.log('User Logged In Correctly', user);
 
+        // Aquí es donde actualizamos el lastActive del usuario en Firestore
+        const userDocRef = doc(db, "users", user.uid);
+        await setDoc(userDocRef, {
+            lastActive: serverTimestamp()
+        }, { merge: true });
+        console.log('User last active updated in Firestore');
+
         // Verifica si el usuario es un administrador
-        const userDocRef = doc(db, "admin", user.uid);
-        const adminDocSnap = await getDoc(userDocRef);
+        const adminDocRef = doc(db, "admin", user.uid);
+        const adminDocSnap = await getDoc(adminDocRef);
 
         if (adminDocSnap.exists()) {
             // Si es administrador, redirige al dashboard de admin
@@ -107,7 +113,7 @@ signinForm.addEventListener('submit', async(e) => {
 });
 
 signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Esto evitará que el formulario se envíe y agregue los datos a la URL
+    e.preventDefault();
 
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('signupEmail');
@@ -122,7 +128,7 @@ signupForm.addEventListener('submit', async (e) => {
     const department = departmentInput.value;
 
     try{
-        const userCredential = await registerWithEmail(email,password);
+        const userCredential = await registerWithEmail(email, password);
         console.log('User registered with email and password', userCredential.user);
 
         // Guarda la información adicional del usuario en Firestore
@@ -130,34 +136,18 @@ signupForm.addEventListener('submit', async (e) => {
             name: name,
             birthday: birthday,
             department: department,
-            createdAt: serverTimestamp()
+            createdAt: serverTimestamp(),
+            lastActive: serverTimestamp()
         });
 
-        console.log('User additional information saved to Firestore');
-
-        const successMessage = document.createElement('div');
-        successMessage.textContent = 'Creación de cuenta exitosa';
-        successMessage.className = 'success-message'; // Utiliza esta clase para el estilo en tu CSS
-        document.body.appendChild(successMessage);
-
-        setTimeout(() => {
-            if (document.body.contains(successMessage)) {
-                document.body.removeChild(successMessage);
-            }
-        }, 3000);
-
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 2500); // Asegúrate de que este retraso sea mayor al del mensaje para que el usuario pueda leerlo
-
-
-        signupForm.reset();
-    }catch (error) {
+        console.log('User additional information and last active saved to Firestore');
+        window.location.href = 'index.html';
+    } catch (error) {
         console.error('Error during signup:', error);
-        // Manejo del error de registro
+        // Manejo del error de registro aquí
     }
-
 });
+
 
 googleSignUpButton.addEventListener("click", (e) => {
     e.preventDefault(); // Evita el comportamiento por defecto del botón (navegar a un enlace).

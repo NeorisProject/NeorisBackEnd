@@ -1011,24 +1011,11 @@ textarea {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1;
-  font-size: 0.25em;
+  font-size: 0.75em;
 }
 
-.trend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.icon-upward {
-  color: #4caf50;
-  margin-right: 5px;
-}
-
-/* Customize the stroke color to match your design */
 .circle {
-  stroke: #000;
+  stroke: #1B242A;
 }
 
 /* Barra de busqyeda */
@@ -1141,18 +1128,6 @@ tbody tr {
 
 tbody tr:nth-child(even) {
   background-color: #f7fafc;
-}
-
-.status-pending {
-  color: #e53e3e;
-}
-
-.status-dispatch {
-  color: #48bb78;
-}
-
-.status-completed {
-  color: #3182ce;
 }
 
 td .status-circle {
