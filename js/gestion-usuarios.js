@@ -4,8 +4,29 @@ import { app } from './firebase.js';
 
 const db = getFirestore(app);
 
+function filterCourses(filterText) {
+    const tableBody = document.querySelector('section.table__body table tbody');
+    const rows = tableBody.querySelectorAll('tr');
+    rows.forEach(row => {
+        const courseId = row.querySelector('td:nth-child(1)').textContent.toLowerCase(); // ID del curso está en la primera columna
+        const courseName = row.querySelector('td:nth-child(2)').textContent.toLowerCase(); // Nombre del curso está en la segunda columna
+        const isVisible = courseId.includes(filterText) || courseName.includes(filterText);
+        row.style.display = isVisible ? '' : 'none';
+    });
+}
+
+
 // Asegúrate de que el código se ejecute solo después de que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
+
+    const searchInput = document.getElementById('searchUsersInput');
+    searchInput.addEventListener('input', function() {
+        // Aquí va la lógica para filtrar los cursos
+        const filterText = searchInput.value.toLowerCase();
+        // Suponiendo que tienes una función que filtra los cursos en la tabla
+        filterCourses(filterText);
+    });
+
     // Referencia a la colección de usuarios
     const usersCollectionRef = collection(db, "users");
 
@@ -87,6 +108,8 @@ document.querySelector('#users_table').addEventListener('click', function(event)
             deleteDocument(userId);
         }
     }
+
+
 });
 
 // Función para eliminar un documento de usuario
