@@ -729,29 +729,46 @@ body {
   z-index: 100;
 }
 
-#prevBtn {
+#prevBtnPromptEngineering {
   left: 10px;
 }
 
-#nextBtn {
+#nextBtnPromptEngineering {
   right: 10px;
 }
 
-#prevBtn2 {
+#prevBtnGitHubCopilot {
   left: 10px;
 }
 
-#nextBtn2 {
+#nextBtnGitHubCopilot {
   right: 10px;
 }
 
-#prevBtn3 {
+#prevBtnGitHubAdvancedSecurity {
   left: 10px;
 }
 
-#nextBtn3 {
+#nextBtnGitHubAdvancedSecurity {
   right: 10px;
 }
+
+#prevBtnGenAi {
+  left: 10px;
+}
+
+#nextBtnGenAi {
+  right: 10px;
+}
+
+#prevBtnGenAiFundamentals {
+  left: 10px;
+}
+
+#nextBtnGenAiFundamentals {
+  right: 10px;
+}
+
 
 /* ====================== Juego ========================== */
 
