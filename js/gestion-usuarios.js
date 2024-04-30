@@ -1,4 +1,4 @@
-import { collection, query, where, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+import { collection, query, where, onSnapshot, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { getFirestore, Timestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 import { app } from './firebase.js';
 
@@ -14,6 +14,71 @@ function filterCourses(filterText) {
         row.style.display = isVisible ? '' : 'none';
     });
 }
+
+document.getElementById('toPDF').addEventListener('click', function() {
+    const jsPDF = window.jspdf.jsPDF;  // Acceder correctamente al constructor de jsPDF
+    const doc = new jsPDF();
+
+    doc.autoTable({
+        html: '#users_table table',  // Asegúrate de que el selector coincida con tu tabla HTML
+        theme: 'grid',
+        styles: { fillColor: [255, 255, 255] },  // Estilos opcionales
+        columnStyles: {
+            0: { fillColor: [41, 128, 185] }  // Ejemplo de color para la primera columna
+        },
+        margin: { top: 10 }
+    });
+
+    doc.save('usuarios.pdf');
+});
+
+
+document.getElementById('toJSON').addEventListener('click', function() {
+    const jsonData = [];
+    const rows = document.querySelectorAll('#users_table tbody tr');
+    rows.forEach(row => {
+        const data = {
+            id: row.cells[0].innerText,
+            name: row.cells[1].innerText,
+            department: row.cells[2].innerText,
+            coins: row.cells[3].innerText,
+            courses: row.cells[4].innerText
+        };
+        jsonData.push(data);
+    });
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "usuarios.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+});
+
+document.getElementById('toCSV').addEventListener('click', function() {
+    let csvContent = "data:text/csv;charset=utf-8,";
+    const rows = document.querySelectorAll('#users_table table tr');
+    rows.forEach(function(row) {
+        let rowData = Array.from(row.querySelectorAll('td, th')).map(cell => cell.textContent);
+        csvContent += rowData.join(",") + "\r\n";
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "usuarios.csv");
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+});
+
+document.getElementById('toEXCEL').addEventListener('click', function() {
+    const workbook = XLSX.utils.book_new();
+    const ws = XLSX.utils.table_to_sheet(document.querySelector('#users_table table'));
+    XLSX.utils.book_append_sheet(workbook, ws, "Usuarios");
+    XLSX.writeFile(workbook, 'usuarios.xlsx');
+});
+
 
 
 // Asegúrate de que el código se ejecute solo después de que el DOM esté cargado
@@ -88,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${userId}</td>
-            <td><img src="${user.profilePicture || 'img/table/customer02.jpg'}" alt="">${user.name}</td>
+            <td><img src="${user.profilePicture || 'img/no_usuario.png'}" alt="">${user.name}</td>
             <td>${user.department || 'Departamento no encontrado'}</td>
             <td class="centered">${user.coins || 0}</td>
             <td class="centered">${user.unlockedCourses || 0}</td>
@@ -124,6 +189,4 @@ function deleteDocument(userId) {
             console.error("Error eliminando documento:", error);
         });
 }
-
-
 });

@@ -948,8 +948,6 @@ textarea {
   color: #F3F2F2;
 }
 
-/* ====================== Admin-FAQ ========================== */
-
 
 
 /* Statistics Grid 2x1 Styles */
@@ -1013,24 +1011,11 @@ textarea {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1;
-  font-size: 0.25em;
+  font-size: 0.75em;
 }
 
-.trend {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.icon-upward {
-  color: #4caf50;
-  margin-right: 5px;
-}
-
-/* Customize the stroke color to match your design */
 .circle {
-  stroke: #000;
+  stroke: #1B242A;
 }
 
 /* Barra de busqyeda */
@@ -1145,18 +1130,6 @@ tbody tr:nth-child(even) {
   background-color: #f7fafc;
 }
 
-.status-pending {
-  color: #e53e3e;
-}
-
-.status-dispatch {
-  color: #48bb78;
-}
-
-.status-completed {
-  color: #3182ce;
-}
-
 td .status-circle {
   height: 10px;
   width: 10px;
@@ -1244,6 +1217,7 @@ td .status-circle {
  font-size: 20px;
  line-height: 1.5;
  border-bottom: 1px solid #222;
+ padding-bottom: 25px;
 }
 
 .lock-icon.green {
