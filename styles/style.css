@@ -1245,3 +1245,11 @@ td .status-circle {
  line-height: 1.5;
  border-bottom: 1px solid #222;
 }
+
+.lock-icon.green {
+  color: green;
+}
+
+.lock-icon.red {
+  color: red;
+}

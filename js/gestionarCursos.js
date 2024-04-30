@@ -95,6 +95,21 @@ function uploadSelectedFile() {
     });
 }
 
+async function addNewCourseToUsers(newCourseId) {
+  const usersSnapshot = await getDocs(collection(db, 'users'));
+
+  for (let doc of usersSnapshot.docs) {
+      await updateDoc(doc.ref, {
+          [`courses.${newCourseId}`]: {
+              unlocked: false
+          }
+      });
+      console.log(`Added course ${newCourseId} with status locked to user `);
+
+  }
+}
+
+
 // Manejador de eventos para el formulario de edición
 document.getElementById('addCourseForm').addEventListener('submit',async function(e) {
     e.preventDefault();
@@ -138,6 +153,7 @@ document.getElementById('addCourseForm').addEventListener('submit',async functio
         console.log('Course image and details updated successfully');
         // Aquí puedes limpiar el formulario o cerrar el modal si así lo deseas
       }
+      await addNewCourseToUsers(docRef.id);
     }catch (error) {
       console.error('Error al añadir el curso: ', error);
   }

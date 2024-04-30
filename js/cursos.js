@@ -1,3 +1,4 @@
+
 //import { collection } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"
 import { ref , uploadBytes, getDownloadURL, getStorage } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 import { db, getDocs, collection, serverTimestamp, query,app } from './firebase.js';
@@ -8,14 +9,7 @@ const storage = getStorage(app);
 
 console.log('This should appear in the console');
 
-/*
-const storageRef = ref(storage, 'courses_images/' + file.name);
-uploadBytes(storageRef, file).then((snapshot) => {
-  getDownloadURL(snapshot.ref).then((downloadURL) => {
-    // Guarda esta URL en Firestore asociada con el curso
-    console.log('File available at', downloadURL);
-  });
-});*/
+
 async function fetchCoursesAndDisplay() {
   console.log('fetching courses...');
   const coursesCollectionRef = collection(db, 'courses');
@@ -38,12 +32,31 @@ async function fetchCoursesAndDisplay() {
   }
 }
 
+function toggleLock(event, item, courseId) {
+  event.stopPropagation();
+  event.preventDefault();// Prevent link navigation
+
+  const isLocked = item.getAttribute('data-locked') === 'true';
+  item.setAttribute('data-locked', isLocked ? 'false' : 'true');
+
+  const icon = item.querySelector('.lock-icon');
+  icon.name = isLocked ? 'lock-open-outline' : 'lock-closed-outline';
+  icon.className = isLocked ? 'lock-icon green' : 'lock-icon red';
+
+  const db = firebase.firestore();
+
+  db.collection('courses').doc(courseId).update({ publicado: !isLocked })
+      .then(() => console.log(`Course ${isLocked ? 'unlocked' : 'locked'} in Firestore`))
+      .catch(error => console.error('Error updating lock state:', error));
+}
+
 function createCourseElement(course) {
   const courseItem = document.createElement('a');
   courseItem.className = 'carousel-item';
   courseItem.href = course.hipervinculo;
   courseItem.dataset.id = course.id;
-  courseItem.dataset.locked = 'false'; // You can modify this as necessary
+  
+  courseItem.dataset.locked = course.publicado ? 'false' : 'true';
 
   const img = document.createElement('img');
   img.src = course.coursePicture;
@@ -59,9 +72,14 @@ function createCourseElement(course) {
   p.textContent = course.descripcion;
 
   const icon = document.createElement('ion-icon');
-  icon.name = 'lock-open-outline';
+  icon.name = course.publicado ? 'lock-open-outline' : 'lock-closed-outline';
+  icon.className = course.publicado ? 'lock-icon green' : 'lock-icon red'; // Set color
+
+  icon.name = course.publicado ? 'lock-open-outline' : 'lock-closed-outline';
   icon.className = 'lock-icon';
   // Add event listener if necessary for toggleLock
+
+  icon.addEventListener('click', (event) => toggleLock(event, courseItem, course.id));
 
   description.appendChild(h3);
   description.appendChild(p);
