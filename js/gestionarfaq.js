@@ -25,8 +25,7 @@ window.activarModalEliminar = async function activarModalEliminar() {
   }
 
 
-// Agregar una nueva FAQ a Firebase
-function agregarFAQ(pregunta, respuesta) {
+  function agregarFAQ(pregunta, respuesta) {
     addDoc(collection(db, "faqs"), {
         pregunta: pregunta,
         respuesta: respuesta
@@ -34,12 +33,15 @@ function agregarFAQ(pregunta, respuesta) {
     .then(function(docRef) {
         console.log("FAQ agregada con ID:", docRef.id);
         alert('FAQ agregada correctamente!');
+        document.getElementById('preguntaFAQ').value = ''; // Limpiar el campo de la pregunta
+        document.getElementById('respuestaFAQ').value = ''; // Limpiar el campo de la respuesta
     })
     .catch(function(error) {
         console.error("Error al agregar FAQ:", error);
         alert('Error al agregar FAQ. Por favor, intente de nuevo.');
     });
 }
+
 
 
 async function eliminarFAQ(faqId) {

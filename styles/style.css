@@ -948,8 +948,6 @@ textarea {
   color: #F3F2F2;
 }
 
-/* ====================== Admin-FAQ ========================== */
-
 
 
 /* Statistics Grid 2x1 Styles */
@@ -1244,4 +1242,5 @@ td .status-circle {
  font-size: 20px;
  line-height: 1.5;
  border-bottom: 1px solid #222;
+ padding-bottom: 25px;
 }
