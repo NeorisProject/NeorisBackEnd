@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${userId}</td>
-            <td><img src="${user.profilePicture || 'img/table/customer02.jpg'}" alt="">${user.name}</td>
+            <td><img src="${user.profilePicture || 'img/no_usuario.png'}" alt="">${user.name}</td>
             <td>${user.department || 'Departamento no encontrado'}</td>
             <td class="centered">${user.coins || 0}</td>
             <td class="centered">${user.unlockedCourses || 0}</td>
