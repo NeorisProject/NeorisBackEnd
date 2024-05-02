@@ -4,6 +4,9 @@ import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/
 import {  getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"
 import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
+import { assignCoursesToNewUser,loadUserData  } from './businessLogic.js';
+
+
 //import {saveUserLogin , getUserSignUp, saveUserSignUp,getUserSignUp} from './firebase.js'
 const db = getFirestore(app);
 
@@ -112,6 +115,9 @@ signinForm.addEventListener('submit', async(e) => {
     });
 });
 
+//-----------------------------------------
+
+
 signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -129,7 +135,13 @@ signupForm.addEventListener('submit', async (e) => {
 
     try{
         const userCredential = await registerWithEmail(email, password);
-        console.log('User registered with email and password', userCredential.user);
+        const user = userCredential.user;
+        
+        console.log("Nuevo usuario creado:", user.email);
+
+
+        await assignCoursesToNewUser(user.uid); // Asigna cursos al nuevo usuario
+
 
         // Guarda la información adicional del usuario en Firestore
         await setDoc(doc(db, "users", userCredential.user.uid), {
@@ -137,11 +149,14 @@ signupForm.addEventListener('submit', async (e) => {
             birthday: birthday,
             department: department,
             createdAt: serverTimestamp(),
-            lastActive: serverTimestamp()
+            lastActive: serverTimestamp(),
+            coins:500
         });
 
         console.log('User additional information and last active saved to Firestore');
-        window.location.href = 'index.html';
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 3000); 
     } catch (error) {
         console.error('Error during signup:', error);
         // Manejo del error de registro aquí
